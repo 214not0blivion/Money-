@@ -1,8 +1,9 @@
 name: Deploy Mendez Stone site to GitHub Pages
 
 # Publishes the static site in mendez_stone/ to GitHub Pages.
-# Auto-enables Pages on first run (public repo + admin token), so there is
-# no manual settings toggle required.
+# ONE-TIME setup: in repo Settings → Pages → Source, choose "GitHub Actions".
+# (GitHub does not let the Actions token enable Pages automatically.)
+# After that, every push to this branch redeploys the site with no clicks.
 
 on:
   push:
