@@ -110,6 +110,26 @@
         .catch(function () { return localReply(data); });
     }
 
+    var leadEmail = (CFG.leadEmail || "").trim();
+    if (leadEmail) {
+      // No server, no key: email the lead to the owner via FormSubmit.
+      // First submission triggers a one-time confirmation email to activate.
+      var fields = {
+        _subject: "New countertop lead — " + (data.name || "website"),
+        _template: "table",
+        _captcha: "false",
+        name: data.name, phone: data.phone, email: data.email,
+        material: data.material, sqft: data.sqft, project: data.project,
+        submitted_at: data.submitted_at
+      };
+      return fetch("https://formsubmit.co/ajax/" + encodeURIComponent(leadEmail), {
+        method: "POST",
+        headers: { "Content-Type": "application/json", Accept: "application/json" },
+        body: JSON.stringify(fields)
+      }).then(function () { return localReply(data); })
+        .catch(function () { return localReply(data); });
+    }
+
     // DEMO mode — no backend, no email key. Just show the instant reply.
     return new Promise(function (res) { setTimeout(function () { res(localReply(data)); }, 900); });
   }

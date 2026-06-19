@@ -25,6 +25,14 @@ window.MENDEZ_CONFIG = {
   //     still sees the instant AI price reply either way).
   web3formsKey: "",
 
+  // 2c) Simplest option — email leads with NO key and NO signup, via FormSubmit.
+  //     Every quote request is emailed here. The FIRST submission sends a
+  //     one-time confirmation email to this address; click the link once to
+  //     activate, and all future leads arrive automatically.
+  //     (Note: this email is visible in the page source. To hide it, use the
+  //     web3formsKey option above instead, which uses an opaque key.)
+  leadEmail: "angelmanuemartinez2@gmail.com",
+
   // 3) Pricing used by the instant estimate (per installed square foot, USD).
   //    Match these to your real numbers — they drive the instant quote.
   pricing: {
