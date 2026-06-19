@@ -5,6 +5,9 @@
 # Generated products
 output/
 
+# Captured leads (customer PII — keep out of git)
+mendez_stone/leads.jsonl
+
 # Python
 __pycache__/
 *.py[cod]
