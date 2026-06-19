@@ -1,0 +1,25 @@
+# ── Digital Product Factory — product brief ───────────────────────────────
+# Copy to config.yaml and edit. Every run produces ONE finished product
+# from this brief: the content file (Markdown + optional PDF) plus the
+# marketplace listing copy you paste into Gumroad / Etsy / Payhip.
+
+# What you're selling and to whom. The more specific the niche, the better
+# it sells — "Notion templates for freelance designers" beats "templates".
+niche: "time management for overwhelmed freelancers"
+audience: "freelancers juggling many clients who feel disorganized and behind"
+
+# product_type: guide | prompt_pack | template_bundle | checklist_pack
+product_type: guide
+
+tone: "practical, warm, no fluff — like a knowledgeable friend"
+brand_name: "Your Brand"
+
+# Number of sections/chapters/items to generate.
+sections: 8
+
+# Suggested retail price (the model also recommends one in the listing).
+target_price_usd: 19
+
+# ── Model settings (sensible defaults; rarely need changing) ───────────────
+model: claude-opus-4-8
+effort: high
