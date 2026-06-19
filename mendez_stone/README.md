@@ -65,14 +65,17 @@ python3 -m http.server 5500
 ## Make it yours (edit `config.js`)
 
 ```js
-booksyUrl:    "https://booksy.com/your-business",   // your Booksy link
+booksyUrl:    "https://booksy.com/en-us/1567222_mendez-stone_other_134786_dallas",
 leadEndpoint: "",                                   // "" = browser-only demo
 pricing: { Granite: {low:45, high:75}, ... },       // your real $/sq ft
 ```
 
-- **Booksy link** — on Booksy: *Profile → Share → copy your booking link*. Paste
-  it as `booksyUrl`. Until then, every "Book" button sends people to the quote
+- **Booksy link** — already wired to your live Dallas page. If it ever changes,
+  on Booksy do *Profile → Share → copy your booking link* and paste it here.
+  Every "Book" button opens it; if you blank it, buttons fall back to the quote
   form so you still capture the lead.
+- **Phone** — the one thing I couldn't pull from Booksy. Add it in the footer of
+  `index.html` (the `tel:` link) so customers can call.
 - **Pricing** — drives the instant estimate. Set it to your real numbers.
 - **Photos** — replace the colored gallery tiles with your project photos by
   editing the `.gallery figure` backgrounds in `styles.css` (e.g.

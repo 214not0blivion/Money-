@@ -34,7 +34,11 @@ from http.server import BaseHTTPRequestHandler, ThreadingHTTPServer
 
 # ── Business config — match these to your real numbers ─────────────────────
 BUSINESS_NAME = "Mendez Stone"
-BOOKSY_URL = os.environ.get("BOOKSY_URL", "")  # optional, included in replies
+# Your live Booksy page (override with the BOOKSY_URL env var if it changes).
+BOOKSY_URL = os.environ.get(
+    "BOOKSY_URL",
+    "https://booksy.com/en-us/1567222_mendez-stone_other_134786_dallas",
+)
 PORT = int(os.environ.get("PORT", "8000"))
 LEADS_FILE = os.path.join(os.path.dirname(__file__), "leads.jsonl")
 

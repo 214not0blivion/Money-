@@ -91,8 +91,13 @@ em{font-style:italic;color:var(--gold-deep)}
 .card:hover{transform:translateY(-4px);box-shadow:var(--shadow)}
 .card-ico{font-size:1.8rem}
 .card h3{margin:.6rem 0 .4rem;font-size:1.35rem}
+.card-es{display:block;font-family:"Inter",sans-serif;font-weight:500;font-size:.82rem;
+  color:var(--muted);font-style:italic;margin-top:.1rem}
 .card p{color:var(--muted);font-size:.95rem;margin:0 0 1rem}
 .card-price{font-weight:600;color:var(--gold-deep);font-size:.9rem}
+.card-cta{background:var(--stone-900);color:var(--cream);display:flex;flex-direction:column}
+.card-cta p{color:#b9b0a0}
+.card-cta .btn{margin-top:auto;align-self:flex-start}
 
 /* ---- gallery ---- */
 .gallery{display:grid;grid-template-columns:repeat(4,1fr);grid-auto-rows:160px;gap:.9rem}
@@ -125,6 +130,7 @@ em{font-style:italic;color:var(--gold-deep)}
   border-radius:var(--radius);padding:1.6rem;font-family:"Fraunces",serif;font-size:1.1rem}
 .reviews cite{display:block;margin-top:1rem;font-family:"Inter",sans-serif;font-style:normal;
   font-size:.85rem;color:var(--muted)}
+.reviews-note{text-align:center;color:var(--muted);font-size:.8rem;margin-top:1.4rem}
 
 /* ---- quote / form ---- */
 .quote-wrap{display:grid;grid-template-columns:1fr 1fr;gap:2.5rem;align-items:start}

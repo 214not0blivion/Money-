@@ -7,7 +7,7 @@ window.MENDEZ_CONFIG = {
   // 1) Your Booksy booking link. Paste the URL of your Booksy business page.
   //    On Booksy: Profile → Share → copy your booking link.
   //    Until you set this, "Book on Booksy" buttons scroll to the quote form.
-  booksyUrl: "https://booksy.com/",
+  booksyUrl: "https://booksy.com/en-us/1567222_mendez-stone_other_134786_dallas",
 
   // 2) Where the quote form sends leads.
   //    - Leave "" to run in DEMO mode: the AI reply is generated locally in the
