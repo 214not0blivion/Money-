@@ -15,7 +15,9 @@ mendez_stone/
   styles.css      # all styling (edit colors / gallery photos here)
   config.js       # ← your settings: Booksy link, pricing, backend URL
   app.js          # form handling + instant AI reply in the browser
-  lead_agent.py   # optional AI backend: qualifies leads, drafts replies, saves them
+  lead_agent.py   # AI backend: qualifies leads, drafts replies, saves them
+  automation.py   # always-on loop: auto-outreach, HOT alerts, follow-up drip
+  channels.py     # send messages via console / email (SMTP) / SMS (Twilio)
 ```
 
 ---
@@ -97,6 +99,69 @@ line) — open it any time, import to a CRM, or pipe it into a follow-up flow.
 
 ---
 
+## The automatic agents (always-on loop)
+
+`lead_agent.py` answers leads as they come in. `automation.py` is the **worker
+that runs on autopilot** — start it once and leave it running. Every tick it:
+
+1. **Instant outreach** — texts/emails each new lead their quote immediately.
+2. **HOT alerts** — notifies *you* the moment a high-value lead lands, so you
+   can call while they're still shopping.
+3. **Follow-up drip** — keeps nudging leads who haven't replied on a schedule
+   (1h → 1d → 3d → 7d), then stops. This is where most jobs are saved: the
+   lead that would've gone cold gets a friendly, on-brand reminder automatically.
+
+```bash
+cd mendez_stone
+
+# Terminal 1 — capture leads from the website form
+python3 lead_agent.py
+
+# Terminal 2 — the autopilot loop
+python3 automation.py                 # runs forever, checks every 30s
+```
+
+It runs in **console mode** with zero setup so you can watch it work. See a full
+drip play out in seconds:
+
+```bash
+FOLLOWUP_FAST=1 TICK=2 python3 automation.py
+```
+
+Manage the queue any time:
+
+```bash
+python3 automation.py list            # every lead + where it is in the drip
+python3 automation.py done <lead_id>  # customer replied → stop nudging them
+python3 automation.py --once          # single pass (good for cron)
+```
+
+### Going live with real Email / SMS (no new packages)
+
+The channels turn on automatically when their env vars are present (see
+`channels.py`). Set whichever you want:
+
+```bash
+# Email (any SMTP provider)
+export SMTP_HOST=smtp.gmail.com SMTP_USER=you@gmail.com SMTP_PASS=app-password
+export SMTP_FROM="Mendez Stone <you@gmail.com>"
+
+# SMS (Twilio)
+export TWILIO_SID=ACxxx TWILIO_TOKEN=xxx TWILIO_FROM=+1XXXXXXXXXX
+
+# Where HOT-lead alerts go to YOU
+export OWNER_PHONE=+1XXXXXXXXXX        # or OWNER_EMAIL=you@email.com
+
+# Smarter, varied follow-up wording (optional)
+export ANTHROPIC_API_KEY=sk-ant-...
+```
+
+With SMS configured the customer gets a text; otherwise email; otherwise it
+prints to the console. A send failure never crashes the loop — it falls back to
+console and keeps going.
+
+---
+
 ## What "AI agents that automate leads" means here (honest version)
 
 The agent automates the **instant response and intake** — the part that wins
@@ -110,9 +175,12 @@ What still needs a human: doing the measure, fabricating, installing, and
 closing. The AI makes sure **no lead goes cold while you're on a job** — it
 doesn't replace the craftsmanship that earns the 5-star reviews.
 
-### Next steps you can wire in
-- Email/SMS the customer the reply automatically (add Twilio/SendGrid in
-  `handle_lead`).
-- Text yourself when a `HOT` lead comes in.
+### Already built
+- ✅ Auto Email/SMS the customer the reply (Twilio / SMTP in `channels.py`).
+- ✅ Text/email yourself when a `HOT` lead comes in.
+- ✅ Automatic multi-touch follow-up drip until they respond.
+
+### Next steps you could wire in
 - Push leads into Booksy or a CRM via their API.
 - Auto-suggest open Booksy slots in the reply.
+- Two-way replies (parse inbound SMS/email to auto-mark leads as responded).

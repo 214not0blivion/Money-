@@ -100,9 +100,15 @@
     var first = (d.name || "there").split(" ")[0];
     var range;
     if (sqft && sqft > 0) {
-      var lo = Math.max(CFG.minJob || 0, Math.round(sqft * pricing.low));
+      var min = CFG.minJob || 0;
+      var lo = Math.round(sqft * pricing.low);
       var hi = Math.round(sqft * pricing.high);
-      range = "$" + lo.toLocaleString() + "–$" + hi.toLocaleString();
+      if (hi < min) {
+        range = "around $" + min.toLocaleString() + " (minimum job)";
+      } else {
+        lo = Math.max(min, lo);
+        range = "$" + lo.toLocaleString() + "–$" + hi.toLocaleString();
+      }
     } else {
       range = "$" + pricing.low + "–$" + pricing.high + " / sq ft installed";
     }

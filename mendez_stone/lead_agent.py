@@ -59,8 +59,12 @@ def estimate(material, sqft):
     except (TypeError, ValueError):
         sq = 0
     if sq > 0:
-        lo = max(MIN_JOB, round(sq * low))
+        lo = round(sq * low)
         hi = round(sq * high)
+        if hi < MIN_JOB:
+            # Small job below our minimum — quote the minimum, don't invert.
+            return f"around ${MIN_JOB:,} (minimum job)"
+        lo = max(MIN_JOB, lo)
         return f"${lo:,}–${hi:,}"
     return f"${low}–${high} / sq ft installed"
 
