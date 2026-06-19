@@ -144,11 +144,11 @@ em{font-style:italic;color:var(--gold-deep)}
 .quote-or a{color:var(--gold)}
 .quote-form{background:var(--paper);color:var(--text);border-radius:var(--radius);
   padding:1.8rem;box-shadow:var(--shadow)}
-.field{margin-bottom:1rem;display:flex;flex-direction:column}
+.field{margin-bottom:1rem;display:flex;flex-direction:column;min-width:0}
 .field-row{display:grid;grid-template-columns:1fr 1fr;gap:1rem}
 .field label{font-size:.82rem;font-weight:600;margin-bottom:.35rem;color:var(--muted)}
 .field input,.field select,.field textarea{font:inherit;padding:.7rem .8rem;border:1px solid var(--line);
-  border-radius:10px;background:#fff;color:var(--text)}
+  border-radius:10px;background:#fff;color:var(--text);width:100%;min-width:0;max-width:100%;box-sizing:border-box}
 .field input:focus,.field select:focus,.field textarea:focus{outline:2px solid var(--gold)}
 .field input.invalid,.field select.invalid{border-color:#d65a4a;outline-color:#d65a4a}
 .form-fine{font-size:.75rem;color:var(--muted);text-align:center;margin:.8rem 0 0}
