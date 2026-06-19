@@ -38,6 +38,7 @@ import time
 from datetime import datetime, timezone
 
 import channels
+import inbox_watcher
 import lead_agent as agent
 
 HERE = os.path.dirname(os.path.abspath(__file__))
@@ -191,23 +192,43 @@ def _ai_followup(step_label, lead, est):
 # ── one pass over all leads ────────────────────────────────────────────────
 def tick(state):
     changed = False
-    for record in read_leads():
+    records = read_leads()
+
+    # Make sure every lead has a state entry before we read replies.
+    for record in records:
         lid = lead_id(record)
         lead = record.get("lead", {})
-        st = state.get(lid)
-        if st is None:
-            st = {
+        if lid not in state:
+            state[lid] = {
                 "name": lead.get("name"),
                 "material": lead.get("material"),
                 "priority": record.get("signals", {}).get("priority", "warm"),
                 "first_seen": now(),
                 "last_step_at": 0.0,
-                "step": -1,            # index of last step sent in CADENCE
-                "status": "active",    # active | responded | done
+                "step": -1,
+                "status": "active",
                 "hot_alerted": False,
             }
-            state[lid] = st
             changed = True
+
+    # Read the inbox: auto-stop the drip for anyone who booked or replied.
+    active_contacts = [
+        {
+            "lead_id": lead_id(r),
+            "email": r.get("lead", {}).get("email"),
+            "name": r.get("lead", {}).get("name"),
+            "phone": r.get("lead", {}).get("phone"),
+        }
+        for r in records
+        if state.get(lead_id(r), {}).get("status") == "active"
+    ]
+    if inbox_watcher.scan_and_update(state, active_contacts):
+        changed = True
+
+    for record in records:
+        lid = lead_id(record)
+        lead = record.get("lead", {})
+        st = state[lid]  # guaranteed to exist (created above)
 
         if st["status"] != "active":
             continue

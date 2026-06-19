@@ -18,7 +18,25 @@ mendez_stone/
   lead_agent.py   # AI backend: qualifies leads, drafts replies, saves them
   automation.py   # always-on loop: auto-outreach, HOT alerts, follow-up drip
   channels.py     # send messages via console / email (SMTP) / SMS (Twilio)
+  inbox_watcher.py# reads replies/Booksy confirmations → auto-stops the drip
 ```
+
+## Can I just sit back and receive appointments?
+
+Mostly yes — for everything up to the appointment. Honest version: a countertop
+business has work software can't do — the **measure, fabrication, and install**
+are human. What runs without you is the whole path to a booked job:
+
+```
+lead fills form → instant AI reply + price → follow-up drip if no answer
+   → they self-book on Booksy → inbox_watcher sees the confirmation
+   → drip stops + you get a "📅 BOOKED" alert → you show up to the measure
+```
+
+**Booksy is the engine that actually puts appointments on your calendar.** The
+page and the agents exist to funnel every lead into that Booksy booking link and
+to chase the ones who hesitate. Your job shrinks to: keep the Booksy link in
+`config.js` current, and do the great install work.
 
 ---
 
@@ -160,6 +178,29 @@ With SMS configured the customer gets a text; otherwise email; otherwise it
 prints to the console. A send failure never crashes the loop — it falls back to
 console and keeps going.
 
+### Auto-stop the drip when they book or reply (`inbox_watcher.py`)
+
+This is the piece that makes it truly hands-off. Each tick the loop checks your
+mailbox and, for any active lead:
+
+- a **Booksy booking confirmation** → marks the lead `booked`, stops the drip,
+  and alerts you `📅 BOOKED`;
+- a **reply from the customer** → marks the lead `responded`, stops the drip,
+  and alerts you `💬 Reply` so a human takes over.
+
+It's inert until you add read-only IMAP credentials (Gmail shown; any IMAP host
+works). For Gmail, create an **App Password** — your normal login won't work:
+
+```bash
+export IMAP_HOST=imap.gmail.com
+export IMAP_USER=you@gmail.com
+export IMAP_PASS=your-app-password
+# optional: IMAP_PORT=993  IMAP_FOLDER=INBOX  IMAP_LOOKBACK_DAYS=14
+```
+
+It only reads recent mail, never deletes anything, and skips silently on error.
+Set the mailbox to whatever address receives your Booksy notifications.
+
 ---
 
 ## What "AI agents that automate leads" means here (honest version)
@@ -179,8 +220,9 @@ doesn't replace the craftsmanship that earns the 5-star reviews.
 - ✅ Auto Email/SMS the customer the reply (Twilio / SMTP in `channels.py`).
 - ✅ Text/email yourself when a `HOT` lead comes in.
 - ✅ Automatic multi-touch follow-up drip until they respond.
+- ✅ Inbox watcher: auto-stops the drip when a lead books or replies, and
+  alerts you to take over (`inbox_watcher.py`).
 
 ### Next steps you could wire in
-- Push leads into Booksy or a CRM via their API.
-- Auto-suggest open Booksy slots in the reply.
-- Two-way replies (parse inbound SMS/email to auto-mark leads as responded).
+- Push leads into a CRM via its API.
+- Auto-suggest specific open Booksy slots in the reply (needs Booksy API access).
