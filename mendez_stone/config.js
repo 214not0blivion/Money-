@@ -16,6 +16,15 @@ window.MENDEZ_CONFIG = {
   //      to get real AI replies + leads saved + email/SMS automation.
   leadEndpoint: "",
 
+  // 2b) Email each lead straight to your inbox with NO server — perfect for
+  //     GitHub Pages / any static host. Get a FREE key in 30 seconds:
+  //       1. go to https://web3forms.com
+  //       2. type the email where you want leads sent
+  //       3. copy the "Access Key" they show you and paste it below.
+  //     When set, every quote submission emails you instantly (the visitor
+  //     still sees the instant AI price reply either way).
+  web3formsKey: "",
+
   // 3) Pricing used by the instant estimate (per installed square foot, USD).
   //    Match these to your real numbers — they drive the instant quote.
   pricing: {

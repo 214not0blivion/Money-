@@ -79,18 +79,39 @@
 
   function submitLead(data) {
     var ep = (CFG.leadEndpoint || "").trim();
-    if (!ep) {
-      // DEMO mode — no backend. Resolve with a locally generated reply.
-      return new Promise(function (res) { setTimeout(function () { res(localReply(data)); }, 900); });
+    if (ep) {
+      // Full backend (lead_agent.py): it returns the AI-written reply.
+      return fetch(ep, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(data)
+      }).then(function (r) {
+        if (!r.ok) throw new Error("bad status");
+        return r.json();
+      }).then(function (j) { return j.reply || localReply(data); });
     }
-    return fetch(ep, {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(data)
-    }).then(function (r) {
-      if (!r.ok) throw new Error("bad status");
-      return r.json();
-    }).then(function (j) { return j.reply || localReply(data); });
+
+    var key = (CFG.web3formsKey || "").trim();
+    if (key) {
+      // No server: email the lead to the owner via Web3Forms, show local reply.
+      var payload = {
+        access_key: key,
+        subject: "New countertop lead — " + (data.name || "website"),
+        from_name: "Mendez Stone website",
+        name: data.name, phone: data.phone, email: data.email,
+        material: data.material, sqft: data.sqft, project: data.project,
+        submitted_at: data.submitted_at
+      };
+      return fetch("https://api.web3forms.com/submit", {
+        method: "POST",
+        headers: { "Content-Type": "application/json", Accept: "application/json" },
+        body: JSON.stringify(payload)
+      }).then(function () { return localReply(data); })
+        .catch(function () { return localReply(data); });
+    }
+
+    // DEMO mode — no backend, no email key. Just show the instant reply.
+    return new Promise(function (res) { setTimeout(function () { res(localReply(data)); }, 900); });
   }
 
   // Browser-side estimate so the page is fully functional with zero backend.

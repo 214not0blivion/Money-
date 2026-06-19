@@ -1,0 +1,51 @@
+name: Deploy Mendez Stone site to GitHub Pages
+
+# Publishes the static site in mendez_stone/ to GitHub Pages.
+# Auto-enables Pages on first run (public repo + admin token), so there is
+# no manual settings toggle required.
+
+on:
+  push:
+    branches:
+      - claude/adoring-hawking-6km68e
+    paths:
+      - "mendez_stone/**"
+      - ".github/workflows/deploy-pages.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: true
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Configure Pages (enable if needed)
+        uses: actions/configure-pages@v5
+        with:
+          enablement: true
+
+      - name: Upload site artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: mendez_stone
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
