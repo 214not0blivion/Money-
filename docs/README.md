@@ -22,11 +22,12 @@ open `index.html` in a browser and it works.
 Everything business-specific lives in **one file**: `js/site-config.js`.
 Open it and replace every value marked `TODO`:
 
-- `phone` / `phoneHref` — your real phone number
-- `email` / `bookingEmail` — where booking requests should land
-- `addressLine1` / `addressLine2` — shop and slab yard address
-- `serviceArea` — the area you actually cover
-- `hours` — your real business hours
+- `phone` / `phoneHref` — your real phone number **(still a placeholder)**
+- `email` / `bookingEmail` — where booking requests should land **(still a placeholder)**
+- `addressLine1` — currently `S. Central Expressway`; **needs the street number and suite**
+- `addressLine2` — currently `Dallas, TX`; **needs the ZIP code**
+- `hours` — confirm these are your real business hours
+- `serviceArea` — set to Dallas–Fort Worth and North Texas
 - `pricing` — installed price per square foot, low and high, per material
 - `addons` — flat prices for cutouts, demo, edge upgrades, backsplash
 - `minimumJob` and `depositPercent`
@@ -36,6 +37,27 @@ math across every page.
 
 The price ranges also appear as text in the comparison table on
 `materials.html` — update those to match if you change `pricing`.
+
+Two more places repeat the address and hours and are **not** driven by the
+config file, because search engines read them before JavaScript runs:
+
+- the `application/ld+json` block in the `<head>` of `index.html`
+- the service-area town list in the "Where we work" section of `index.html`
+
+Update those by hand whenever the address or hours change.
+
+## Local search
+
+The site is set up for Dallas-area search: page titles and descriptions name
+Dallas and DFW, the home page lists the towns served, and the structured-data
+block tells Google this is a Dallas home-and-construction business with its
+hours and service area.
+
+The single highest-impact thing left is outside this repository — **claim your
+Google Business Profile** at google.com/business. For a local trade, that
+listing drives more calls than the website itself, and the two reinforce each
+other. Use the exact same business name, address, and phone number in both
+places; mismatches hurt local ranking.
 
 ## How the booking form submits
 

@@ -14,9 +14,11 @@ window.MENDEZ_STONE = {
   bookingEmail: 'info@mendezstone.com',       // TODO: real email
 
   // --- Location & hours ----------------------------------------------------
-  addressLine1: '000 Example Rd',             // TODO: shop address
-  addressLine2: 'Your City, ST 00000',        // TODO
-  serviceArea: 'the greater metro area and surrounding counties within 60 miles', // TODO
+  addressLine1: 'S. Central Expressway',      // TODO: add street number + suite
+  addressLine2: 'Dallas, TX',                 // TODO: add ZIP code
+  city: 'Dallas',
+  state: 'TX',
+  serviceArea: 'Dallas–Fort Worth and the surrounding North Texas communities',
   hours: [
     ['Monday – Friday', '8:00 AM – 5:00 PM'],
     ['Saturday', '9:00 AM – 2:00 PM'],
