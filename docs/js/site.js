@@ -28,7 +28,6 @@
     fillText('serviceArea', cfg.serviceArea);
     fillHref('phone', cfg.phoneHref);
     fillHref('sms', cfg.smsHref);
-    fillHref('booksy', cfg.booksyUrl);
     fillHref('email', cfg.email ? 'mailto:' + cfg.email : null);
 
     // Business hours table, if the page has one.
@@ -43,13 +42,6 @@
     // data-ms-optional="<configKey>" links to that URL when it is set, and
     // removes itself entirely when it is not — so unconfigured links never
     // show up as dead ends.
-    // Booksy links open in a new tab and hide themselves if unconfigured.
-    document.querySelectorAll('[data-ms-href="booksy"]').forEach(function (el) {
-      if (!cfg.booksyUrl) { el.remove(); return; }
-      el.setAttribute('target', '_blank');
-      el.setAttribute('rel', 'noopener');
-    });
-
     document.querySelectorAll('[data-ms-optional]').forEach(function (el) {
       var url = cfg[el.getAttribute('data-ms-optional')];
       if (!url) { el.remove(); return; }

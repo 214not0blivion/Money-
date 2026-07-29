@@ -36,10 +36,7 @@ window.MENDEZ_STONE = {
     ['Out on a job?', 'Text is fastest']
   ],
 
-  // --- Booking & lead delivery ---------------------------------------------
-  // Booksy is where customers self-book a time. Taken from the previous site.
-  booksyUrl: 'https://booksy.com/en-us/1567222_mendez-stone_other_134786_dallas',
-
+  // --- Lead delivery --------------------------------------------------------
   // Where the booking form actually sends requests, tried in this order:
   //   1. leadEndpoint  — your own server, if you ever run one
   //   2. web3formsKey  — free key from web3forms.com; hides your address
