@@ -264,8 +264,10 @@
       '<strong>Almost done — one more click.</strong><br>' +
       'Your request is ready to send. ' +
       '<a href="' + href + '" style="font-weight:600;">Click here to open it in your email app</a> ' +
-      'and press send. Prefer the phone? Call <a data-ms-href="phone" href="' +
-      (cfg.phoneHref || '#') + '">' + escapeHtml(cfg.phone || '') + '</a>.' +
+      'and press send. Rather not use email? Call or text ' +
+      '<a href="' + (cfg.phoneHref || '#') + '">' + escapeHtml(cfg.phone || '') + '</a> ' +
+      '(<a href="' + (cfg.smsHref || '#') + '">text us</a> — usually the fastest way to ' +
+      'reach us).' +
       '<details style="margin-top:.8rem;"><summary style="cursor:pointer;">Or copy your request text</summary>' +
       '<textarea readonly style="width:100%;height:220px;margin-top:.5rem;font-family:monospace;font-size:.8rem;">' +
       escapeHtml(summary) + '</textarea></details>');

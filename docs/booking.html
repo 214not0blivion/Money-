@@ -58,11 +58,13 @@
             </label>
             <label class="field">Preferred contact method
               <select id="contact_method" name="contact_method">
-                <option value="">No preference</option>
-                <option>Phone call</option>
                 <option>Text message</option>
+                <option>Phone call</option>
                 <option>Email</option>
+                <option value="">No preference</option>
               </select>
+              <span class="hint">Text is usually quickest — we answer as soon as we're off
+              the job site.</span>
             </label>
             <label class="field">Best time to reach you
               <select id="contact_time" name="contact_time">
@@ -344,8 +346,10 @@
       </div>
       <div class="card">
         <h3>Prefer to talk?</h3>
-        <p>Call <a data-ms-href="phone" href="#" class="accent-text"><span data-ms="phone"></span></a>
-        or email <a data-ms-href="email" href="#" class="accent-text"><span data-ms="email"></span></a>.
+        <p>Call or text <a data-ms-href="phone" href="#" class="accent-text"><span data-ms="phone"></span></a>
+        — <a data-ms-href="sms" href="#" class="accent-text">texting</a> reaches us fastest if
+        we're out on an install. Or email
+        <a data-ms-href="email" href="#" class="accent-text"><span data-ms="email"></span></a>.
         We're happy to walk through options before you commit to anything.</p>
       </div>
     </div>
@@ -364,7 +368,8 @@
       <div>
         <h4>Contact</h4>
         <ul>
-          <li><a data-ms-href="phone" href="#"><span data-ms="phone">Call us</span></a></li>
+          <li><a data-ms-href="phone" href="#">Call <span data-ms="phone"></span></a></li>
+          <li><a data-ms-href="sms" href="#">Text <span data-ms="phone"></span></a></li>
           <li><a data-ms-href="email" href="#"><span data-ms="email">Email us</span></a></li>
           <li><span data-ms="address1"></span></li>
           <li><span data-ms="address2"></span></li>

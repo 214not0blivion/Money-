@@ -10,6 +10,7 @@ window.MENDEZ_STONE = {
   // places — Google compares them, and a mismatch hurts local ranking.
   phone: '(972) 989-0169',
   phoneHref: 'tel:+19729890169',
+  smsHref: 'sms:+19729890169',   // same number — opens the customer's text app
   email: 'info@mendezstone.com',              // TODO: real email
   // Where the booking form sends requests. Until a form backend is set up,
   // the form opens the customer's email app addressed here.
@@ -26,8 +27,9 @@ window.MENDEZ_STONE = {
   // If you ever want posted hours instead, replace these rows with real times
   // and make them identical to the Google Business Profile.
   hours: [
-    ['Monday – Sunday', 'Flexible — call anytime'],
-    ['Shop &amp; slab yard', 'Open by appointment']
+    ['Monday – Sunday', 'Flexible — call or text anytime'],
+    ['Shop &amp; slab yard', 'Open by appointment'],
+    ['Out on a job?', 'Text is fastest']
   ],
 
   // --- Google Business Profile ---------------------------------------------
