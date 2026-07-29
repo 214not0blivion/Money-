@@ -487,6 +487,33 @@ a:hover { color: var(--ink-900); }
    real photographs reads more honestly than a tidy grid of crops anyway.
    ------------------------------------------------------------------------- */
 
+.work-feature {
+  margin: 0 0 1.5rem;
+  background: var(--ink-900);
+  overflow: hidden;
+}
+
+.work-feature img { width: 100%; height: auto; display: block; }
+
+.work-feature figcaption {
+  padding: 1.1rem 1.4rem 1.3rem;
+  color: var(--slate-300);
+  display: grid;
+  gap: 0.2rem 2rem;
+  font-size: 0.94rem;
+}
+
+@media (min-width: 46rem) {
+  .work-feature figcaption {
+    grid-template-columns: minmax(0, 1fr) auto;
+    align-items: baseline;
+  }
+  .work-feature .work-meta { text-align: right; white-space: nowrap; }
+}
+
+.work-feature .kicker { color: var(--verdigris-bright); margin-bottom: 0.15rem; }
+.work-feature .work-meta { color: var(--slate-400); font-family: var(--font-mono); font-size: 0.76rem; letter-spacing: 0.08em; text-transform: uppercase; }
+
 .work-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(min(100%, 17rem), 1fr));
