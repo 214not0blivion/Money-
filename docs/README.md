@@ -90,6 +90,31 @@ var FORM_ENDPOINT = 'https://formspree.io/f/your-form-id';
 
 The form will POST there and fall back to email only if the request fails.
 
+## Photos
+
+Job photos live in `img/`, two sizes each: `-800.jpg` for phones and
+`-1600.jpg` for desktop and retina. The `<img>` tags use `srcset`, so a phone
+downloads roughly 490 KB for the whole gallery instead of the 22 MB the
+originals weighed.
+
+**To add more**, don't upload straight off the camera — resize first:
+
+```python
+from PIL import Image, ImageOps
+im = ImageOps.exif_transpose(Image.open('IMG_1234.jpeg')).convert('RGB')
+for w in (1600, 800):
+    out = im.copy(); out.thumbnail((w, w * 10), Image.LANCZOS)
+    out.save(f'img/my-photo-{w}.jpg', 'JPEG', quality=82,
+             optimize=True, progressive=True)
+```
+
+`exif_transpose` matters: phone photos carry a rotation flag, and skipping it
+lands some pictures on their side.
+
+Then copy a `<figure class="work-item">` block in the "Recent work" section of
+`index.html`, and write a real caption. Say what the material is and what was
+done — "quartzite island, single seam at the sink" beats "beautiful kitchen".
+
 ## Live shop status
 
 A bar under the menu on every page tells customers whether you can pick up
