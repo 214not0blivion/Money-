@@ -69,7 +69,7 @@
         <li><a href="materials.html">Materials</a></li>
         <li><a href="prepare.html">Prepare</a></li>
         <li><a href="faq.html">FAQ</a></li>
-        <li><a class="nav-phone" data-ms-href="phone" href="#">📞 <span data-ms="phone"></span></a></li>
+        <li><a class="nav-phone" data-ms-href="phone" href="#"><span data-ms="phone"></span></a></li>
         <li><a class="nav-cta" href="booking.html">Book Installation</a></li>
       </ul>
     </nav>
@@ -79,18 +79,38 @@
 <div id="shop-status" class="status-bar" hidden></div>
 
 <section class="hero">
-  <div class="container hero-inner">
-    <span class="eyebrow">Dallas · Fabrication &amp; Installation</span>
-    <h1>Countertops measured, cut, and installed by one crew.</h1>
-    <p class="lead">
-      From slab selection to the final seam, Mendez Stone handles the whole job in-house —
-      serving Dallas and the surrounding North Texas communities from our shop at 8300 South
-      Central Expressway. Start in our customer portal: check materials, get a ballpark
-      price, and book your template appointment in a few minutes.
-    </p>
-    <div class="btn-row">
-      <a class="btn btn-primary" href="booking.html">Book an Installation</a>
-      <a class="btn btn-ghost" href="portal.html">Open the Customer Portal</a>
+  <canvas class="hero-slab" data-stone="hero" aria-hidden="true"></canvas>
+  <div class="container">
+    <div class="hero-inner">
+      <span class="eyebrow">Dallas · Fabrication &amp; Installation</span>
+      <h1>Countertops measured, cut, and installed by one crew.</h1>
+      <p class="lead">
+        From slab selection to the final seam, Mendez Stone handles the whole job in-house —
+        serving Dallas and North Texas from our shop at 8300 South Central Expressway.
+        Check materials, get a ballpark price, and book your template appointment in minutes.
+      </p>
+      <div class="btn-row">
+        <a class="btn btn-primary" href="booking.html">Book an Installation</a>
+        <a class="btn btn-ghost" href="portal.html">Open the Customer Portal</a>
+      </div>
+      <dl class="hero-specs">
+        <div class="hero-spec">
+          <dt>Template to install</dt>
+          <dd>2–3 weeks</dd>
+        </div>
+        <div class="hero-spec">
+          <dt>Standard thickness</dt>
+          <dd>3 cm</dd>
+        </div>
+        <div class="hero-spec">
+          <dt>Most kitchens set in</dt>
+          <dd>One day</dd>
+        </div>
+        <div class="hero-spec">
+          <dt>Fabrication</dt>
+          <dd>In-house</dd>
+        </div>
+      </dl>
     </div>
   </div>
 </section>
@@ -104,38 +124,32 @@
     </div>
     <div class="grid">
       <div class="card">
-        <span class="icon">📐</span>
-        <h3>Laser Templating</h3>
+                <h3>Laser Templating</h3>
         <p>Digital templates capture your cabinets exactly as built — including the walls that
         aren't square. Precise templates are what make seams disappear.</p>
       </div>
       <div class="card">
-        <span class="icon">🪨</span>
-        <h3>Slab Selection</h3>
+                <h3>Slab Selection</h3>
         <p>Walk the slab yard with us and pick the exact piece your kitchen gets. We lay out the
         veining before we cut so the pattern lands where you want it.</p>
       </div>
       <div class="card">
-        <span class="icon">⚙️</span>
-        <h3>In-House Fabrication</h3>
+                <h3>In-House Fabrication</h3>
         <p>CNC cutting, edge profiling, and polishing done in our own shop. Nothing gets
         subcontracted, so nothing gets lost in translation.</p>
       </div>
       <div class="card">
-        <span class="icon">🔧</span>
-        <h3>Installation</h3>
+                <h3>Installation</h3>
         <p>Tear-out, set, seam, and seal — most kitchens in a single day. We protect your floors
         and haul the old tops away.</p>
       </div>
       <div class="card">
-        <span class="icon">🚿</span>
-        <h3>Sinks &amp; Cutouts</h3>
+                <h3>Sinks &amp; Cutouts</h3>
         <p>Undermount and drop-in sinks, cooktops, faucet holes, and soap dispensers cut to your
         fixture's exact template.</p>
       </div>
       <div class="card">
-        <span class="icon">🛠️</span>
-        <h3>Repairs &amp; Restoration</h3>
+                <h3>Repairs &amp; Restoration</h3>
         <p>Chip repair, seam refresh, re-polishing, and resealing on stone we installed and stone
         we didn't.</p>
       </div>
@@ -204,26 +218,34 @@
       <a href="materials.html">full comparison</a> covers durability, sealing, and price.</p>
     </div>
     <div class="grid">
-      <div class="card">
-        <div class="swatch swatch-granite"></div>
-        <h3>Granite</h3>
+      <div class="card stone">
+        <canvas class="swatch" data-stone="granite" data-seed="granite"></canvas>
+        <div class="stone-body">
+          <h3>Granite</h3>
         <p>Natural, heat-resistant, and every slab is one of a kind. Needs sealing about once a year.</p>
+        </div>
       </div>
-      <div class="card">
-        <div class="swatch swatch-quartz"></div>
-        <h3>Quartz</h3>
+      <div class="card stone">
+        <canvas class="swatch" data-stone="quartz" data-seed="quartz"></canvas>
+        <div class="stone-body">
+          <h3>Quartz</h3>
         <p>Engineered and non-porous. No sealing, consistent color, the lowest-maintenance option.</p>
+        </div>
       </div>
-      <div class="card">
-        <div class="swatch swatch-marble"></div>
-        <h3>Marble</h3>
+      <div class="card stone">
+        <canvas class="swatch" data-stone="marble" data-seed="marble"></canvas>
+        <div class="stone-body">
+          <h3>Marble</h3>
         <p>Unmatched for looks and pastry work. Etches and stains — it earns a patina rather than
         staying pristine.</p>
+        </div>
       </div>
-      <div class="card">
-        <div class="swatch swatch-quartzite"></div>
-        <h3>Quartzite</h3>
+      <div class="card stone">
+        <canvas class="swatch" data-stone="quartzite" data-seed="quartzite"></canvas>
+        <div class="stone-body">
+          <h3>Quartzite</h3>
         <p>Natural stone with marble's look and granite's toughness. Premium price, premium wear.</p>
+        </div>
       </div>
     </div>
     <p class="mt-2"><a class="btn btn-primary" href="materials.html">Compare all materials</a></p>
@@ -306,6 +328,7 @@
 
 <script src="js/site-config.js"></script>
 <script src="js/site.js"></script>
+<script src="js/textures.js"></script>
 <script src="js/status.js"></script>
 </body>
 </html>

@@ -22,7 +22,7 @@
         <li><a href="materials.html">Materials</a></li>
         <li><a href="prepare.html">Prepare</a></li>
         <li><a href="faq.html">FAQ</a></li>
-        <li><a class="nav-phone" data-ms-href="phone" href="#">📞 <span data-ms="phone"></span></a></li>
+        <li><a class="nav-phone" data-ms-href="phone" href="#"><span data-ms="phone"></span></a></li>
         <li><a class="nav-cta" href="booking.html">Book Installation</a></li>
       </ul>
     </nav>
@@ -43,47 +43,59 @@
 <section class="section">
   <div class="container">
     <div class="grid">
-      <div class="card">
-        <div class="swatch swatch-granite"></div>
-        <h3>Granite</h3>
+      <div class="card stone">
+        <canvas class="swatch" data-stone="granite" data-seed="granite"></canvas>
+        <div class="stone-body">
+          <h3>Granite</h3>
         <p><strong>Natural igneous stone.</strong> Heat-proof, hard to scratch, and no two slabs
         alike. Slightly porous, so it wants sealing roughly once a year. The workhorse choice, and
         usually the best value in natural stone.</p>
+        </div>
       </div>
-      <div class="card">
-        <div class="swatch swatch-quartz"></div>
-        <h3>Quartz (Engineered)</h3>
+      <div class="card stone">
+        <canvas class="swatch" data-stone="quartz" data-seed="quartz"></canvas>
+        <div class="stone-body">
+          <h3>Quartz (Engineered)</h3>
         <p><strong>Ground quartz bound in resin.</strong> Non-porous, never needs sealing, and the
         color you see in the showroom is the color you get throughout. Not heat-proof — the resin
         scorches, so use trivets. The lowest-maintenance surface we install.</p>
+        </div>
       </div>
-      <div class="card">
-        <div class="swatch swatch-marble"></div>
-        <h3>Marble</h3>
+      <div class="card stone">
+        <canvas class="swatch" data-stone="marble" data-seed="marble"></canvas>
+        <div class="stone-body">
+          <h3>Marble</h3>
         <p><strong>Natural metamorphic stone.</strong> Nothing else looks like it, and it stays
         cool for pastry. It also etches from lemon juice and wine and stains from oil. Choose it
         knowing it will develop a patina — that's the deal.</p>
+        </div>
       </div>
-      <div class="card">
-        <div class="swatch swatch-quartzite"></div>
-        <h3>Quartzite</h3>
+      <div class="card stone">
+        <canvas class="swatch" data-stone="quartzite" data-seed="quartzite"></canvas>
+        <div class="stone-body">
+          <h3>Quartzite</h3>
         <p><strong>Natural, and harder than granite.</strong> Often looks like marble but resists
         etching far better. Dense and difficult to fabricate, which is why it costs more. Excellent
         for a busy kitchen that wants the marble look.</p>
+        </div>
       </div>
-      <div class="card">
-        <div class="swatch swatch-porcelain"></div>
-        <h3>Porcelain</h3>
+      <div class="card stone">
+        <canvas class="swatch" data-stone="porcelain" data-seed="porcelain"></canvas>
+        <div class="stone-body">
+          <h3>Porcelain</h3>
         <p><strong>Ultra-compact sintered slab.</strong> UV-stable, heat-proof, stain-proof, and
         thin. Great outdoors and for waterfall panels. Edges show a color core unless mitered, and
         it chips if struck hard on a corner.</p>
+        </div>
       </div>
-      <div class="card">
-        <div class="swatch swatch-butcher"></div>
-        <h3>Butcher Block &amp; Soapstone</h3>
+      <div class="card stone">
+        <canvas class="swatch" data-stone="soapstone" data-seed="butcher"></canvas>
+        <div class="stone-body">
+          <h3>Butcher Block &amp; Soapstone</h3>
         <p><strong>The warm options.</strong> Soapstone is non-porous, acid-proof, and darkens with
         mineral oil. Butcher block is inexpensive and repairable but needs regular oiling and hates
         standing water near the sink.</p>
+        </div>
       </div>
     </div>
   </div>
@@ -181,23 +193,83 @@
       <p>The edge changes the whole feel of a countertop. Standard profiles are included in the
       per-square-foot price; premium profiles add about $12 per linear foot.</p>
     </div>
-    <div class="table-wrap">
-      <table class="info">
-        <thead>
-          <tr><th>Profile</th><th>Tier</th><th>Looks like</th><th>Notes</th></tr>
-        </thead>
-        <tbody>
-          <tr><td><strong>Eased (Square)</strong></td><td>Standard</td><td>A crisp square edge with the sharpness taken off</td><td>Modern and clean. The most common choice.</td></tr>
-          <tr><td><strong>Quarter Round</strong></td><td>Standard</td><td>Top corner rounded, bottom square</td><td>Softer than eased, still simple. Easy to wipe crumbs over.</td></tr>
-          <tr><td><strong>Half Bullnose</strong></td><td>Standard</td><td>Top half rolled into a curve</td><td>Forgiving on hips and toddler heads. Sheds water well.</td></tr>
-          <tr><td><strong>Beveled</strong></td><td>Standard</td><td>A 45° chamfer along the top</td><td>Traditional and crisp. Shows chips more than rounded edges.</td></tr>
-          <tr><td><strong>Full Bullnose</strong></td><td>Premium</td><td>The entire edge rolled into a half circle</td><td>Very safe, very traditional. Makes the top look thinner.</td></tr>
-          <tr><td><strong>Ogee</strong></td><td>Premium</td><td>An S-curve</td><td>Formal and ornate. Best on thicker stone and classic kitchens.</td></tr>
-          <tr><td><strong>Mitered / Built-Up</strong></td><td>Premium</td><td>A thick slab edge, 2" to 4" tall</td><td>Two pieces joined at 45°, so the top reads as one massive block.</td></tr>
-          <tr><td><strong>Waterfall</strong></td><td>Premium</td><td>The stone turns down the side of an island to the floor</td><td>Priced per panel and needs slab area for it. Show-stopper on islands.</td></tr>
-        </tbody>
-      </table>
+    <div class="profiles">
+      <div class="profile">
+        <svg viewBox="0 0 162 112" role="img" aria-label="Eased (Square) edge, cross-section">
+          <path d="M12,30 H146 A4,4 0 0 1 150,34 V68 A4,4 0 0 1 146,72 H12 Z" fill="var(--ink-700)"/>
+          <path d="M12,30 H146 A4,4 0 0 1 150,34 V68 A4,4 0 0 1 146,72 H12 Z" fill="none" stroke="var(--verdigris)" stroke-width="1.5"/>
+        </svg>
+        <span class="spec">Standard</span>
+        <h3>Eased (Square)</h3>
+        <p>A crisp square edge with the sharpness taken off. Modern, clean, and the most common choice.</p>
+      </div>
+      <div class="profile">
+        <svg viewBox="0 0 162 112" role="img" aria-label="Quarter Round edge, cross-section">
+          <path d="M12,30 H136 A14,14 0 0 1 150,44 V68 A4,4 0 0 1 146,72 H12 Z" fill="var(--ink-700)"/>
+          <path d="M12,30 H136 A14,14 0 0 1 150,44 V68 A4,4 0 0 1 146,72 H12 Z" fill="none" stroke="var(--verdigris)" stroke-width="1.5"/>
+        </svg>
+        <span class="spec">Standard</span>
+        <h3>Quarter Round</h3>
+        <p>Top corner rounded, bottom left square. Softer than eased, and crumbs wipe straight over it.</p>
+      </div>
+      <div class="profile">
+        <svg viewBox="0 0 162 112" role="img" aria-label="Half Bullnose edge, cross-section">
+          <path d="M12,30 H129 A21,21 0 0 1 150,51 V67 A5,5 0 0 1 145,72 H12 Z" fill="var(--ink-700)"/>
+          <path d="M12,30 H129 A21,21 0 0 1 150,51 V67 A5,5 0 0 1 145,72 H12 Z" fill="none" stroke="var(--verdigris)" stroke-width="1.5"/>
+        </svg>
+        <span class="spec">Standard</span>
+        <h3>Half Bullnose</h3>
+        <p>The top half rolled into a curve. Forgiving on hips and toddler heads, and it sheds water well.</p>
+      </div>
+      <div class="profile">
+        <svg viewBox="0 0 162 112" role="img" aria-label="Beveled edge, cross-section">
+          <path d="M12,30 H136 L150,44 V68 A4,4 0 0 1 146,72 H12 Z" fill="var(--ink-700)"/>
+          <path d="M12,30 H136 L150,44 V68 A4,4 0 0 1 146,72 H12 Z" fill="none" stroke="var(--verdigris)" stroke-width="1.5"/>
+        </svg>
+        <span class="spec">Standard</span>
+        <h3>Beveled</h3>
+        <p>A 45° chamfer along the top. Traditional and crisp, though it shows chips more than a rounded edge.</p>
+      </div>
+      <div class="profile">
+        <svg viewBox="0 0 162 112" role="img" aria-label="Full Bullnose edge, cross-section">
+          <path d="M12,30 H129 A21,21 0 0 1 129,72 H12 Z" fill="var(--ink-700)"/>
+          <path d="M12,30 H129 A21,21 0 0 1 129,72 H12 Z" fill="none" stroke="var(--verdigris)" stroke-width="1.5"/>
+        </svg>
+        <span class="spec">Premium</span>
+        <h3>Full Bullnose</h3>
+        <p>The whole edge rolled into a half circle. Very safe, very traditional, and it makes the top read thinner.</p>
+      </div>
+      <div class="profile">
+        <svg viewBox="0 0 162 112" role="img" aria-label="Ogee edge, cross-section">
+          <path d="M12,30 H122 C140,30 124,45 134,51 C144,57 140,72 122,72 H12 Z" fill="var(--ink-700)"/>
+          <path d="M12,30 H122 C140,30 124,45 134,51 C144,57 140,72 122,72 H12 Z" fill="none" stroke="var(--verdigris)" stroke-width="1.5"/>
+        </svg>
+        <span class="spec">Premium</span>
+        <h3>Ogee</h3>
+        <p>An S-curve. Formal and ornate — best on thicker stone and classic kitchens.</p>
+      </div>
+      <div class="profile">
+        <svg viewBox="0 0 162 112" role="img" aria-label="Mitered / Built-Up edge, cross-section">
+          <path d="M12,30 H150 V93 A4,4 0 0 1 146,97 H128 A4,4 0 0 1 124,93 V72 H12 Z" fill="var(--ink-700)"/>
+          <path d="M12,30 H150 V93 A4,4 0 0 1 146,97 H128 A4,4 0 0 1 124,93 V72 H12 Z" fill="none" stroke="var(--verdigris)" stroke-width="1.5"/>
+          <path d="M124,72 L150,46" stroke="var(--verdigris)" stroke-width="1" stroke-dasharray="3 3" fill="none" opacity=".9"/>
+        </svg>
+        <span class="spec">Premium</span>
+        <h3>Mitered / Built-Up</h3>
+        <p>Two pieces joined at 45°, so a 3 cm top reads as a solid 2–4 inch block.</p>
+      </div>
+      <div class="profile">
+        <svg viewBox="0 0 162 112" role="img" aria-label="Waterfall edge, cross-section">
+          <path d="M12,30 H150 V104 H110 V72 H12 Z" fill="var(--ink-700)"/>
+          <path d="M12,30 H150 V104 H110 V72 H12 Z" fill="none" stroke="var(--verdigris)" stroke-width="1.5"/>
+          <path d="M110,72 L150,32" stroke="var(--verdigris)" stroke-width="1" stroke-dasharray="3 3" fill="none" opacity=".9"/>
+        </svg>
+        <span class="spec">Premium</span>
+        <h3>Waterfall</h3>
+        <p>The stone turns down the side of an island to the floor. Priced per panel, and a show-stopper.</p>
+      </div>
     </div>
+    <p class="mt-2 form-note">Cross-sections shown at 3&nbsp;cm, the thickness we install as standard. Premium profiles add about $12 per linear foot.</p>
   </div>
 </section>
 
@@ -278,6 +350,7 @@
 
 <script src="js/site-config.js"></script>
 <script src="js/site.js"></script>
+<script src="js/textures.js"></script>
 <script src="js/status.js"></script>
 </body>
 </html>
