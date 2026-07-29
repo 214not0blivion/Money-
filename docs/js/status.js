@@ -137,6 +137,9 @@
   document.addEventListener('DOMContentLoaded', function () {
     var el = document.getElementById('shop-status');
     if (!el) return;
+    // Opened straight off the disk rather than served: fetch is blocked by
+    // CORS, so skip it instead of logging errors at whoever is previewing.
+    if (location.protocol === 'file:') { el.hidden = true; return; }
     load(el);
     setInterval(function () { load(el); }, REFRESH_MS);
   });
