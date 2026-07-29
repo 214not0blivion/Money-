@@ -7,8 +7,13 @@
 <meta name="description" content="Dallas countertop fabrication and installation. Mendez Stone installs granite, quartz, marble, and quartzite throughout DFW. Book your template appointment online.">
 <link rel="stylesheet" href="css/style.css">
 
-<!-- Local business data for Google. Keep in sync with js/site-config.js.
-     Fill in the streetAddress number, postalCode, and telephone before launch. -->
+<!-- Local business data for Google. Keep in sync with js/site-config.js AND with
+     your Google Business Profile — the name, address, and phone must match the
+     profile exactly, or the mismatch works against your local ranking.
+     Before launch: add the streetAddress number, postalCode, and telephone,
+     and add a "sameAs" array holding your Google Business Profile URL, e.g.
+       "sameAs": ["https://www.google.com/maps/place/..."]
+     which is what links this page to that listing. -->
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -289,6 +294,7 @@
           <li><a href="materials.html">Materials guide</a></li>
           <li><a href="prepare.html">Prepare for install day</a></li>
           <li><a href="faq.html">FAQ &amp; care</a></li>
+          <li data-ms-optional="googleProfileUrl"><a href="#">Read our Google reviews</a></li>
         </ul>
       </div>
       <div>

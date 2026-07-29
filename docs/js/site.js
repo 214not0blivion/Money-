@@ -37,6 +37,21 @@
       }).join('');
     }
 
+    // Optional links (Google profile, review link). An element tagged with
+    // data-ms-optional="<configKey>" links to that URL when it is set, and
+    // removes itself entirely when it is not — so unconfigured links never
+    // show up as dead ends.
+    document.querySelectorAll('[data-ms-optional]').forEach(function (el) {
+      var url = cfg[el.getAttribute('data-ms-optional')];
+      if (!url) { el.remove(); return; }
+      var anchor = el.tagName === 'A' ? el : el.querySelector('a');
+      if (anchor) {
+        anchor.setAttribute('href', url);
+        anchor.setAttribute('target', '_blank');
+        anchor.setAttribute('rel', 'noopener');
+      }
+    });
+
     // Current year in the footer.
     document.querySelectorAll('[data-ms="year"]').forEach(function (el) {
       el.textContent = new Date().getFullYear();

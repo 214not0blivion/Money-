@@ -25,6 +25,18 @@ window.MENDEZ_STONE = {
     ['Sunday', 'Closed']
   ],
 
+  // --- Google Business Profile ---------------------------------------------
+  // Paste the two links from your Google Business Profile below. Any link left
+  // empty simply hides itself on the site — nothing breaks.
+  //
+  // googleProfileUrl: your public listing. Search your business on Google,
+  //   click "See all reviews" or the listing title, and copy the URL.
+  // googleReviewUrl: the short "ask for reviews" link. In your Business
+  //   Profile manager, choose "Ask for reviews" and copy the g.page/r/... link.
+  //   Sending customers straight to this opens the star-rating box for them.
+  googleProfileUrl: '',   // TODO: paste your Google listing URL
+  googleReviewUrl: '',    // TODO: paste your "Ask for reviews" short link
+
   // --- Pricing used by the instant estimate --------------------------------
   // Installed price per square foot, low/high. Edit to match your real pricing.
   pricing: {
