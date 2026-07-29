@@ -22,12 +22,16 @@ open `index.html` in a browser and it works.
 Everything business-specific lives in **one file**: `js/site-config.js`.
 Open it and replace every value marked `TODO`:
 
-- `phone` / `phoneHref` — your real phone number **(still a placeholder)**
-- `email` / `bookingEmail` — where booking requests should land **(still a placeholder)**
-- `addressLine1` — currently `S. Central Expressway`; **needs the street number and suite**
-- `addressLine2` — currently `Dallas, TX`; **needs the ZIP code**
-- `hours` — confirm these are your real business hours
+- `phone` / `phoneHref` — set, matches the Google Business Profile
+- `addressLine1` / `addressLine2` — set to 8300 S Central Expy, Dallas, TX 75241
 - `serviceArea` — set to Dallas–Fort Worth and North Texas
+- `email` / `bookingEmail` — **still a placeholder.** Booking requests have
+  nowhere real to go until this is a working inbox.
+- `hours` — **still unverified.** The Google profile shows a 10 PM close, which
+  does not match the weekday 5 PM placeholder below it. Whatever the truth is,
+  make the site and the profile say the same thing.
+- `googleProfileUrl` / `googleReviewUrl` — **not yet filled in.** Until they
+  are, the review links stay hidden.
 - `pricing` — installed price per square foot, low and high, per material
 - `addons` — flat prices for cutouts, demo, edge upgrades, backsplash
 - `minimumJob` and `depositPercent`

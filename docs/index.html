@@ -7,24 +7,26 @@
 <meta name="description" content="Dallas countertop fabrication and installation. Mendez Stone installs granite, quartz, marble, and quartzite throughout DFW. Book your template appointment online.">
 <link rel="stylesheet" href="css/style.css">
 
-<!-- Local business data for Google. Keep in sync with js/site-config.js AND with
-     your Google Business Profile — the name, address, and phone must match the
-     profile exactly, or the mismatch works against your local ranking.
-     Before launch: add the streetAddress number, postalCode, and telephone,
-     and add a "sameAs" array holding your Google Business Profile URL, e.g.
-       "sameAs": ["https://www.google.com/maps/place/..."]
-     which is what links this page to that listing. -->
+<!-- Local business data for Google. Name, address, and phone below match the
+     Google Business Profile exactly — keep them that way, and keep them in
+     sync with js/site-config.js.
+     STILL TO DO: (1) confirm openingHoursSpecification against the profile,
+     which shows a 10 PM close; (2) add a "sameAs" array holding the profile
+     URL, e.g. "sameAs": ["https://www.google.com/maps/place/..."] — that is
+     what explicitly ties this page to that listing. -->
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
   "@type": "HomeAndConstructionBusiness",
   "name": "Mendez Stone",
-  "description": "Custom countertop fabrication and installation serving Dallas–Fort Worth and North Texas.",
+  "description": "Countertop store in Dallas, Texas. Custom countertop fabrication and installation serving Dallas–Fort Worth and North Texas.",
+  "telephone": "+1-972-989-0169",
   "address": {
     "@type": "PostalAddress",
-    "streetAddress": "S. Central Expressway",
+    "streetAddress": "8300 S Central Expy",
     "addressLocality": "Dallas",
     "addressRegion": "TX",
+    "postalCode": "75241",
     "addressCountry": "US"
   },
   "areaServed": [
@@ -78,6 +80,7 @@
         <li><a href="materials.html">Materials</a></li>
         <li><a href="prepare.html">Prepare</a></li>
         <li><a href="faq.html">FAQ</a></li>
+        <li><a class="nav-phone" data-ms-href="phone" href="#">📞 <span data-ms="phone"></span></a></li>
         <li><a class="nav-cta" href="booking.html">Book Installation</a></li>
       </ul>
     </nav>
@@ -90,7 +93,7 @@
     <h1>Countertops measured, cut, and installed by one crew.</h1>
     <p class="lead">
       From slab selection to the final seam, Mendez Stone handles the whole job in-house —
-      serving Dallas and the surrounding North Texas communities from our shop on South
+      serving Dallas and the surrounding North Texas communities from our shop at 8300 South
       Central Expressway. Start in our customer portal: check materials, get a ballpark
       price, and book your template appointment in a few minutes.
     </p>
@@ -241,7 +244,7 @@
     <div class="section-head">
       <span class="eyebrow">Service area</span>
       <h2>Where we work</h2>
-      <p>Our shop sits on South Central Expressway in Dallas, and we install throughout the
+      <p>Our shop sits at 8300 S Central Expressway in Dallas, and we install throughout the
       Metroplex.</p>
     </div>
     <p style="font-size:1.02rem;line-height:2;">

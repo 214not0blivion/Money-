@@ -105,6 +105,15 @@ img { max-width: 100%; display: block; }
   border-bottom-color: var(--accent);
 }
 
+.nav-phone {
+  color: var(--white) !important;
+  font-weight: 600;
+  white-space: nowrap;
+  border-bottom: none !important;
+}
+
+.nav-phone:hover { color: var(--accent) !important; }
+
 .nav-cta {
   background: var(--accent);
   color: var(--white) !important;

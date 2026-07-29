@@ -6,19 +6,26 @@
 
 window.MENDEZ_STONE = {
   // --- Contact -------------------------------------------------------------
-  phone: '(000) 000-0000',                    // TODO: real phone
-  phoneHref: 'tel:+10000000000',              // TODO: same number, digits only
+  // These match the Google Business Profile. Keep them identical in both
+  // places — Google compares them, and a mismatch hurts local ranking.
+  phone: '(972) 989-0169',
+  phoneHref: 'tel:+19729890169',
   email: 'info@mendezstone.com',              // TODO: real email
   // Where the booking form sends requests. Until a form backend is set up,
   // the form opens the customer's email app addressed here.
   bookingEmail: 'info@mendezstone.com',       // TODO: real email
 
   // --- Location & hours ----------------------------------------------------
-  addressLine1: 'S. Central Expressway',      // TODO: add street number + suite
-  addressLine2: 'Dallas, TX',                 // TODO: add ZIP code
+  addressLine1: '8300 S Central Expy',
+  addressLine2: 'Dallas, TX 75241',
   city: 'Dallas',
   state: 'TX',
   serviceArea: 'Dallas–Fort Worth and the surrounding North Texas communities',
+
+  // TODO: CONFIRM THESE HOURS. The Google Business Profile shows a 10 PM
+  // closing time, which does not match the placeholder schedule below. Set
+  // these to your real weekly hours and make them identical to the profile —
+  // customers who drive out to a closed shop leave one-star reviews.
   hours: [
     ['Monday – Friday', '8:00 AM – 5:00 PM'],
     ['Saturday', '9:00 AM – 2:00 PM'],
