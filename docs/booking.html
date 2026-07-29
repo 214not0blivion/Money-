@@ -1,0 +1,407 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Book a Countertop Installation in Dallas — Mendez Stone</title>
+<meta name="description" content="Request your countertop template and installation in Dallas–Fort Worth. Tell us about your job site, material, cutouts, and preferred dates, and see a ballpark estimate instantly.">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<header class="site-header">
+  <div class="container nav-bar">
+    <a class="brand" href="index.html">
+      <span class="brand-mark">MENDEZ <span>STONE</span></span>
+      <span class="brand-tag">Countertops</span>
+    </a>
+    <nav>
+      <ul class="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="portal.html">Customer Portal</a></li>
+        <li><a href="materials.html">Materials</a></li>
+        <li><a href="prepare.html">Prepare</a></li>
+        <li><a href="faq.html">FAQ</a></li>
+        <li><a class="nav-phone" data-ms-href="phone" href="#">📞 <span data-ms="phone"></span></a></li>
+        <li><a class="nav-cta" href="booking.html">Book Installation</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<div id="shop-status" class="status-bar" hidden></div>
+
+<section class="page-hero">
+  <div class="container">
+    <span class="eyebrow">Booking</span>
+    <h1>Request your installation</h1>
+    <p>About five minutes. Everything marked with a red asterisk is required — the rest helps us
+    quote accurately, so fill in what you know and leave the rest blank.</p>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container booking-layout">
+
+    <div class="form-card">
+      <form id="booking-form" novalidate>
+
+        <fieldset>
+          <legend>1. Your contact information</legend>
+          <div class="form-grid">
+            <label class="field full">Full name <span class="req">*</span>
+              <input type="text" id="name" name="name" data-label="name" autocomplete="name" required>
+            </label>
+            <label class="field">Phone <span class="req">*</span>
+              <input type="tel" id="phone" name="phone" data-label="phone" autocomplete="tel" placeholder="(555) 123-4567" required>
+            </label>
+            <label class="field">Email <span class="req">*</span>
+              <input type="email" id="email" name="email" data-label="email" autocomplete="email" placeholder="you@example.com" required>
+            </label>
+            <label class="field">Preferred contact method
+              <select id="contact_method" name="contact_method">
+                <option>Text message</option>
+                <option>Phone call</option>
+                <option>Email</option>
+                <option value="">No preference</option>
+              </select>
+              <span class="hint">Text is usually quickest — we answer as soon as we're off
+              the job site.</span>
+            </label>
+            <label class="field">Best time to reach you
+              <select id="contact_time" name="contact_time">
+                <option value="">Any time</option>
+                <option>Morning (8am – 12pm)</option>
+                <option>Afternoon (12pm – 5pm)</option>
+                <option>Evening (after 5pm)</option>
+              </select>
+            </label>
+          </div>
+        </fieldset>
+
+        <fieldset>
+          <legend>2. Job site</legend>
+          <div class="form-grid">
+            <label class="field full">Street address <span class="req">*</span>
+              <input type="text" id="address" name="address" data-label="street address" autocomplete="street-address" required>
+            </label>
+            <label class="field">City <span class="req">*</span>
+              <input type="text" id="city" name="city" data-label="city" required>
+            </label>
+            <label class="field">State
+              <input type="text" id="state" name="state" maxlength="2" value="TX">
+            </label>
+            <label class="field">ZIP code <span class="req">*</span>
+              <input type="text" id="zip" name="zip" data-label="ZIP code" inputmode="numeric" required>
+            </label>
+            <label class="field">Property type
+              <select id="property_type" name="property_type">
+                <option>Single-family home</option>
+                <option>Condo or apartment</option>
+                <option>Townhouse</option>
+                <option>Commercial space</option>
+                <option>Rental property</option>
+              </select>
+            </label>
+            <label class="field">Project type
+              <select id="project_type" name="project_type">
+                <option>Replacing existing countertops</option>
+                <option>New construction</option>
+                <option>Full kitchen remodel</option>
+                <option>Addition to existing counters</option>
+              </select>
+            </label>
+            <label class="field full">Access notes
+              <textarea id="access_notes" name="access_notes" rows="2" placeholder="Stairs, elevator, gate code, narrow driveway, parking limits, pets on site…"></textarea>
+              <span class="hint">Slabs are heavy and awkward. Anything that complicates carrying them in, tell us now.</span>
+            </label>
+          </div>
+        </fieldset>
+
+        <fieldset>
+          <legend>3. What are we countertopping?</legend>
+          <p class="hint" style="margin-bottom:.8rem;">Select every area that needs stone. <span class="req">*</span></p>
+          <div class="form-grid">
+            <label class="check-row"><input type="checkbox" name="areas" value="Kitchen counters"> Kitchen counters</label>
+            <label class="check-row"><input type="checkbox" name="areas" value="Kitchen island"> Kitchen island</label>
+            <label class="check-row"><input type="checkbox" name="areas" value="Bathroom vanity"> Bathroom vanity</label>
+            <label class="check-row"><input type="checkbox" name="areas" value="Bar or butler's pantry"> Bar / butler's pantry</label>
+            <label class="check-row"><input type="checkbox" name="areas" value="Laundry room"> Laundry room</label>
+            <label class="check-row"><input type="checkbox" name="areas" value="Outdoor kitchen"> Outdoor kitchen</label>
+            <label class="check-row"><input type="checkbox" name="areas" value="Fireplace surround"> Fireplace surround</label>
+            <label class="check-row"><input type="checkbox" name="areas" value="Commercial / other"> Commercial or other</label>
+          </div>
+        </fieldset>
+
+        <fieldset>
+          <legend>4. Material &amp; finish</legend>
+          <div class="form-grid">
+            <label class="field">Material
+              <select id="material" name="material">
+                <option value="unsure">Not sure yet — help me choose</option>
+                <option value="granite">Granite</option>
+                <option value="quartz">Quartz (engineered)</option>
+                <option value="marble">Marble</option>
+                <option value="quartzite">Quartzite</option>
+                <option value="porcelain">Porcelain</option>
+                <option value="soapstone">Soapstone</option>
+              </select>
+              <span class="hint"><a href="materials.html">Compare materials</a> if you're undecided.</span>
+            </label>
+            <label class="field">Color or slab name, if known
+              <input type="text" id="color" name="color" placeholder="e.g. Calacatta Gold, Absolute Black">
+            </label>
+            <label class="field">Approximate square footage
+              <input type="number" id="sqft" name="sqft" min="0" step="1" placeholder="e.g. 45">
+              <span class="hint"><a href="prepare.html#measure">How to measure this</a> — a rough number is fine.</span>
+            </label>
+            <label class="field">Thickness
+              <select id="thickness" name="thickness">
+                <option>3 cm (standard)</option>
+                <option>2 cm</option>
+                <option>Not sure</option>
+              </select>
+            </label>
+            <label class="field">Edge profile
+              <select id="edge" name="edge">
+                <option value="">Not sure yet</option>
+                <option value="eased">Eased / square (standard)</option>
+                <option value="quarter">Quarter round (standard)</option>
+                <option value="half_bullnose">Half bullnose (standard)</option>
+                <option value="beveled">Beveled (standard)</option>
+                <option value="bullnose_full">Full bullnose (premium)</option>
+                <option value="ogee">Ogee (premium)</option>
+                <option value="mitered">Mitered / built-up (premium)</option>
+                <option value="waterfall">Waterfall (premium)</option>
+              </select>
+            </label>
+            <label class="field">Edge linear feet, if known
+              <input type="number" id="edge_lnft" name="edge_lnft" min="0" step="1" placeholder="e.g. 22">
+            </label>
+            <label class="field">Finish
+              <select id="finish" name="finish">
+                <option>Polished</option>
+                <option>Honed (matte)</option>
+                <option>Leathered</option>
+                <option>Not sure</option>
+              </select>
+            </label>
+          </div>
+        </fieldset>
+
+        <fieldset>
+          <legend>5. Sinks, cutouts &amp; extras</legend>
+          <div class="form-grid">
+            <label class="field">Undermount sinks
+              <input type="number" id="sinks_undermount" name="sinks_undermount" min="0" step="1" value="0">
+            </label>
+            <label class="field">Drop-in sinks
+              <input type="number" id="sinks_dropin" name="sinks_dropin" min="0" step="1" value="0">
+            </label>
+            <label class="field">Faucet &amp; accessory holes
+              <input type="number" id="faucet_holes" name="faucet_holes" min="0" step="1" value="0">
+              <span class="hint">Faucet, sprayer, soap dispenser, air gap, filtered water.</span>
+            </label>
+          </div>
+
+          <div style="margin-top:1.2rem;display:grid;gap:.4rem;">
+            <label class="check-row"><input type="checkbox" id="cooktop" name="cooktop"> Cooktop drops into the counter</label>
+            <div id="cooktop-details" class="form-grid" style="margin:.4rem 0 .6rem 1.6rem;">
+              <label class="field">Cooktop type
+                <select id="cooktop_type" name="cooktop_type">
+                  <option>Standard drop-in</option>
+                  <option>Downdraft</option>
+                  <option>Induction, flush mount</option>
+                </select>
+              </label>
+            </div>
+
+            <label class="check-row"><input type="checkbox" id="backsplash" name="backsplash"> Matching stone backsplash</label>
+            <div id="backsplash-details" class="form-grid" style="margin:.4rem 0 .6rem 1.6rem;">
+              <label class="field">Backsplash linear feet
+                <input type="number" id="backsplash_lnft" name="backsplash_lnft" min="0" step="1" placeholder="e.g. 18">
+              </label>
+            </div>
+
+            <label class="check-row"><input type="checkbox" id="demo" name="demo"> Remove and haul away my existing countertops</label>
+            <div id="demo-details" class="form-grid" style="margin:.4rem 0 .6rem 1.6rem;">
+              <label class="field">Existing countertop material
+                <select id="existing_material" name="existing_material">
+                  <option>Laminate</option>
+                  <option>Tile</option>
+                  <option>Granite or stone</option>
+                  <option>Solid surface (Corian)</option>
+                  <option>Butcher block</option>
+                  <option>Concrete</option>
+                </select>
+              </label>
+            </div>
+
+            <label class="check-row"><input type="checkbox" id="plumbing" name="plumbing"> I need plumbing disconnected and reconnected</label>
+          </div>
+        </fieldset>
+
+        <fieldset>
+          <legend>6. Site readiness</legend>
+          <div class="form-grid">
+            <label class="field">Are cabinets installed and level?
+              <select id="cabinets_ready" name="cabinets_ready">
+                <option>Yes — ready to template now</option>
+                <option>Not yet, but they will be by my requested date</option>
+                <option>No — still planning</option>
+              </select>
+              <span class="hint">We cannot template until cabinets are set and level. <a href="prepare.html">See the checklist.</a></span>
+            </label>
+            <label class="field">Will your sink and cooktop be on site?
+              <select id="appliances" name="appliances">
+                <option>Yes, both on site</option>
+                <option>Sink only</option>
+                <option>Neither yet</option>
+                <option>Not applicable</option>
+              </select>
+              <span class="hint">We template around your actual fixtures, not the spec sheet.</span>
+            </label>
+          </div>
+        </fieldset>
+
+        <fieldset>
+          <legend>7. Scheduling</legend>
+          <div class="form-grid">
+            <label class="field">Preferred template date
+              <input type="date" id="template_date" name="template_date">
+            </label>
+            <label class="field">Preferred install window
+              <select id="install_window" name="install_window">
+                <option value="">No preference</option>
+                <option>As soon as possible</option>
+                <option>Within 2 weeks of template</option>
+                <option>Within 1 month</option>
+                <option>1 – 2 months out</option>
+                <option>More than 2 months out</option>
+              </select>
+            </label>
+            <label class="field">Hard deadline, if any
+              <input type="date" id="deadline" name="deadline">
+              <span class="hint">Holiday, event, closing date, or another trade waiting on us.</span>
+            </label>
+            <label class="field">Are your dates flexible?
+              <select id="flexible" name="flexible">
+                <option>Somewhat flexible</option>
+                <option>Very flexible</option>
+                <option>Not flexible — the dates above are firm</option>
+              </select>
+            </label>
+          </div>
+        </fieldset>
+
+        <fieldset>
+          <legend>8. Anything else</legend>
+          <div class="form-grid">
+            <label class="field">How did you hear about us?
+              <select id="referral" name="referral">
+                <option value="">Prefer not to say</option>
+                <option>Friend or family referral</option>
+                <option>Contractor or designer</option>
+                <option>Web search</option>
+                <option>Social media</option>
+                <option>Drove past the shop</option>
+                <option>Repeat customer</option>
+              </select>
+            </label>
+            <label class="field full">Notes, questions, or special requests
+              <textarea id="notes" name="notes" rows="4" placeholder="Anything we should know — a tricky corner, an appliance that has to stay, a design you've seen, a budget you're working to…"></textarea>
+            </label>
+          </div>
+        </fieldset>
+
+        <div class="form-actions">
+          <button type="submit" class="btn btn-primary">Submit Request</button>
+          <span class="form-note">We respond within one business day. Submitting costs nothing
+          and commits you to nothing.</span>
+        </div>
+
+        <div id="booking-status" role="status" aria-live="polite"></div>
+      </form>
+    </div>
+
+    <aside class="booking-aside">
+      <div class="form-card" id="estimate-box">
+        <p class="form-note">Enter your approximate square footage to see a ballpark range.</p>
+      </div>
+    </aside>
+
+  </div>
+
+  <div class="container mt-2">
+    <div class="grid">
+      <div class="card">
+        <h3>What happens next</h3>
+        <p>We review your request and call you within one business day to confirm details, answer
+        questions, and lock in a template appointment. If you selected a natural stone, we'll set
+        up a slab viewing at the same time.</p>
+      </div>
+      <div class="card">
+        <h3>Deposits &amp; payment</h3>
+        <p>Nothing is due to submit this form. A <span class="accent-text">50% deposit</span> is
+        collected at template, once the final price is confirmed. The balance is due on
+        installation day.</p>
+      </div>
+      <div class="card">
+        <h3>Prefer to talk?</h3>
+        <p>Call or text <a data-ms-href="phone" href="#" class="accent-text"><span data-ms="phone"></span></a>
+        — <a data-ms-href="sms" href="#" class="accent-text">texting</a> reaches us fastest if
+        we're out on an install. Or email
+        <a data-ms-href="email" href="#" class="accent-text"><span data-ms="email"></span></a>.
+        We're happy to walk through options before you commit to anything.</p>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div>
+        <h4>Mendez Stone</h4>
+        <p style="font-size:.92rem;">Custom countertop fabrication and installation serving
+        <span data-ms="serviceArea">your local area</span>.</p>
+      </div>
+      <div>
+        <h4>Contact</h4>
+        <ul>
+          <li><a data-ms-href="phone" href="#">Call <span data-ms="phone"></span></a></li>
+          <li><a data-ms-href="sms" href="#">Text <span data-ms="phone"></span></a></li>
+          <li><a data-ms-href="email" href="#"><span data-ms="email">Email us</span></a></li>
+          <li><span data-ms="address1"></span></li>
+          <li><span data-ms="address2"></span></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Customer Portal</h4>
+        <ul>
+          <li><a href="booking.html">Book an installation</a></li>
+          <li><a href="materials.html">Materials guide</a></li>
+          <li><a href="prepare.html">Prepare for install day</a></li>
+          <li><a href="faq.html">FAQ &amp; care</a></li>
+          <li data-ms-optional="googleProfileUrl"><a href="#">Read our Google reviews</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Availability</h4>
+        <table style="font-size:.9rem;"><tbody data-ms="hours"></tbody></table>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>&copy; <span data-ms="year"></span> Mendez Stone. All rights reserved.</span>
+      <span>Licensed &amp; insured.</span>
+    </div>
+  </div>
+</footer>
+
+<script src="js/site-config.js"></script>
+<script src="js/site.js"></script>
+<script src="js/status.js"></script>
+<script src="js/booking.js"></script>
+</body>
+</html>

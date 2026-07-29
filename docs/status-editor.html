@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Set Shop Status — Mendez Stone (internal)</title>
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<header class="site-header">
+  <div class="container nav-bar">
+    <a class="brand" href="index.html">
+      <span class="brand-mark">MENDEZ <span>STONE</span></span>
+      <span class="brand-tag">Internal</span>
+    </a>
+  </div>
+</header>
+
+<section class="page-hero">
+  <div class="container">
+    <span class="eyebrow">Internal tool — not linked from the public site</span>
+    <h1>Set your shop status</h1>
+    <p>Pick a status, copy the result, and paste it into <code>status.json</code>. Takes about
+    twenty seconds from your phone.</p>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container" style="max-width:760px;">
+
+    <div class="form-card">
+      <fieldset>
+        <legend>1. What's going on right now?</legend>
+        <div style="display:grid;gap:.5rem;">
+          <label class="check-row"><input type="radio" name="state" value="available" checked>
+            <strong>Available</strong> — at the shop, can pick up the phone</label>
+          <label class="check-row"><input type="radio" name="state" value="busy">
+            <strong>On a job</strong> — installing or templating, text me</label>
+          <label class="check-row"><input type="radio" name="state" value="away">
+            <strong>Out</strong> — done for the day, or otherwise unavailable</label>
+        </div>
+      </fieldset>
+
+      <fieldset id="until-block">
+        <legend>2. Back around when?</legend>
+        <p class="hint" style="margin-bottom:.9rem;">The status flips itself back to
+        <strong>Available</strong> once this time passes, so forgetting to clear it costs you
+        nothing. If you genuinely don't know, pick "Rest of the day".</p>
+        <div class="form-grid">
+          <label class="check-row"><input type="radio" name="until" value="60"> In about 1 hour</label>
+          <label class="check-row"><input type="radio" name="until" value="120" checked> In about 2 hours</label>
+          <label class="check-row"><input type="radio" name="until" value="240"> In about 4 hours</label>
+          <label class="check-row"><input type="radio" name="until" value="eod"> Rest of the day</label>
+          <label class="check-row"><input type="radio" name="until" value=""> No end time</label>
+        </div>
+      </fieldset>
+
+      <fieldset>
+        <legend>3. Anything to tell customers? <span style="font-weight:400;font-size:.9rem;">(optional)</span></legend>
+        <label class="field">
+          <input type="text" id="message" maxlength="120"
+                 placeholder="e.g. On an install in Plano — text me and I'll reply between cuts">
+          <span class="hint">Leave blank to use the standard wording for the status you picked.
+          Keep it short; it shows on one line.</span>
+        </label>
+      </fieldset>
+
+      <div class="form-actions">
+        <button type="button" class="btn btn-primary" id="copy-btn">Copy status.json</button>
+        <span class="form-note" id="copy-note"></span>
+      </div>
+    </div>
+
+    <div class="form-card mt-2">
+      <h3 style="font-family:Georgia,serif;margin-bottom:.6rem;">Preview — what customers will see</h3>
+      <div id="preview-holder">
+        <div id="shop-status-preview" class="status-bar"></div>
+      </div>
+      <p class="form-note mt-2">This is the bar that appears under the menu on every page.</p>
+    </div>
+
+    <div class="form-card mt-2">
+      <h3 style="font-family:Georgia,serif;margin-bottom:.6rem;">The file</h3>
+      <textarea id="json-out" readonly rows="7"
+        style="width:100%;font-family:monospace;font-size:.85rem;padding:.7rem;border:1px solid var(--line);border-radius:6px;background:var(--cream);"></textarea>
+      <h3 style="font-family:Georgia,serif;margin:1.4rem 0 .6rem;">How to publish it</h3>
+      <ol style="padding-left:1.2rem;line-height:1.9;font-size:.95rem;">
+        <li>Tap <strong>Copy status.json</strong> above.</li>
+        <li>Open <code>status.json</code> in your repository on GitHub and tap the pencil icon.
+          <span class="hint">Bookmark that page on your phone's home screen — it turns this into
+          a three-tap job.</span></li>
+        <li>Select everything, paste, and commit.</li>
+      </ol>
+      <p class="form-note">The site picks up the change within about five minutes on any page
+      left open, and immediately on a fresh load.</p>
+    </div>
+
+  </div>
+</section>
+
+<script src="js/site-config.js"></script>
+<script src="js/status.js"></script>
+<script>
+(function () {
+  function $(id) { return document.getElementById(id); }
+  function radio(name) {
+    var el = document.querySelector('input[name="' + name + '"]:checked');
+    return el ? el.value : '';
+  }
+
+  function localIso(date) {
+    // RFC3339 with the local UTC offset, so times mean what they say in Dallas.
+    var pad = function (n) { return String(n).padStart(2, '0'); };
+    var off = -date.getTimezoneOffset();
+    var sign = off >= 0 ? '+' : '-';
+    off = Math.abs(off);
+    return date.getFullYear() + '-' + pad(date.getMonth() + 1) + '-' + pad(date.getDate()) +
+      'T' + pad(date.getHours()) + ':' + pad(date.getMinutes()) + ':' + pad(date.getSeconds()) +
+      sign + pad(Math.floor(off / 60)) + ':' + pad(off % 60);
+  }
+
+  function build() {
+    var state = radio('state');
+    var now = new Date();
+    var until = '';
+
+    if (state !== 'available') {
+      var choice = radio('until');
+      if (choice === 'eod') {
+        var eod = new Date(now);
+        eod.setHours(18, 0, 0, 0);
+        if (eod <= now) { eod.setDate(eod.getDate() + 1); }
+        until = localIso(eod);
+      } else if (choice) {
+        until = localIso(new Date(now.getTime() + parseInt(choice, 10) * 60000));
+      }
+    }
+
+    return {
+      state: state,
+      message: $('message').value.trim(),
+      until: until,
+      updated: localIso(now)
+    };
+  }
+
+  function refresh() {
+    var data = build();
+    $('json-out').value = JSON.stringify(data, null, 2);
+
+    $('until-block').style.display = data.state === 'available' ? 'none' : '';
+
+    // Render the real status bar using the real resolver, so the preview
+    // cannot drift from what customers actually see.
+    var holder = $('preview-holder');
+    holder.innerHTML = '<div id="shop-status-preview" class="status-bar"></div>';
+    var el = $('shop-status-preview');
+    var resolved = window.MS_STATUS.resolve(data, new Date());
+    var spec = window.MS_STATUS.STATES[resolved.key];
+    var headline = spec.title;
+    if (resolved.until) {
+      headline += ' — back around ' +
+        resolved.until.toLocaleTimeString('en-US', { hour: 'numeric', minute: '2-digit' });
+    }
+    var detail = (resolved.message || spec.body);
+    el.className = 'status-bar ' + spec.cls;
+    el.innerHTML = '<div class="container status-inner">' +
+      '<span class="status-dot">●</span><span class="status-text"><strong>' +
+      headline + '</strong><span class="status-detail"></span></span></div>';
+    el.querySelector('.status-detail').textContent = detail;
+  }
+
+  document.addEventListener('DOMContentLoaded', function () {
+    document.addEventListener('input', refresh);
+    document.addEventListener('change', refresh);
+
+    $('copy-btn').addEventListener('click', function () {
+      var text = $('json-out').value;
+      var done = function () {
+        $('copy-note').textContent = 'Copied. Now paste it into status.json on GitHub.';
+      };
+      if (navigator.clipboard) {
+        navigator.clipboard.writeText(text).then(done, function () {
+          $('json-out').select(); document.execCommand('copy'); done();
+        });
+      } else {
+        $('json-out').select(); document.execCommand('copy'); done();
+      }
+    });
+
+    refresh();
+  });
+})();
+</script>
+</body>
+</html>
