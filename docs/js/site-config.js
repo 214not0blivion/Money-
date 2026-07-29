@@ -11,10 +11,10 @@ window.MENDEZ_STONE = {
   phone: '(972) 989-0169',
   phoneHref: 'tel:+19729890169',
   smsHref: 'sms:+19729890169',   // same number — opens the customer's text app
-  email: 'info@mendezstone.com',              // TODO: real email
+  email: 'angelmanuemartinez2@gmail.com',
   // Where the booking form sends requests. Until a form backend is set up,
   // the form opens the customer's email app addressed here.
-  bookingEmail: 'info@mendezstone.com',       // TODO: real email
+  bookingEmail: 'angelmanuemartinez2@gmail.com',
 
   // --- Location & hours ----------------------------------------------------
   addressLine1: '8300 S Central Expy',

@@ -25,8 +25,12 @@ Open it and replace every value marked `TODO`:
 - `phone` / `phoneHref` — set, matches the Google Business Profile
 - `addressLine1` / `addressLine2` — set to 8300 S Central Expy, Dallas, TX 75241
 - `serviceArea` — set to Dallas–Fort Worth and North Texas
-- `email` / `bookingEmail` — **still a placeholder.** Booking requests have
-  nowhere real to go until this is a working inbox.
+- `email` / `bookingEmail` — set to a working inbox, so booking requests
+  arrive. Worth revisiting later: this address is published in plain text on
+  every page, which attracts spam, and a personal Gmail reads as less
+  established than a business address to some customers. A free Gmail alias or
+  a `@mendezstone.com` address forwarding to the same inbox fixes both without
+  changing where mail lands.
 - `hours` — set to flexible availability ("call anytime", shop by appointment)
   rather than fixed times. The `index.html` structured data deliberately omits
   an `openingHoursSpecification` so the site never contradicts the hours on
