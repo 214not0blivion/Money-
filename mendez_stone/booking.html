@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <title>Book a Countertop Installation — Mendez Stone Dallas</title>
+  <meta name="description" content="Book your free measure with Mendez Stone in Dallas. Tell us the room, material, cutouts and dates, and see a ballpark price while you fill it in." />
+
+  <!-- Install as a home-screen app (iOS + Android PWA) -->
+  <link rel="manifest" href="manifest.webmanifest" />
+  <meta name="theme-color" content="#fffdf9" />
+  <meta name="mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="default" />
+  <meta name="apple-mobile-web-app-title" content="Mendez Stone" />
+  <link rel="apple-touch-icon" href="assets/apple-touch-icon.png" />
+
+  <!-- Open Graph / social preview -->
+  <meta property="og:title" content="Book a Countertop Installation — Mendez Stone" />
+  <meta property="og:description" content="Premium granite &amp; quartz countertops, expertly installed. Free estimates. Book online." />
+  <meta property="og:type" content="business.business" />
+  <meta property="og:image" content="assets/work6.jpeg" />
+
+  <link rel="icon" type="image/png" href="assets/icon-192.png" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+
+  <!-- Local business structured data for Google -->
+  
+</head>
+<body>
+
+  <!-- ░░ TOP BAR ░░ -->
+  <header class="topbar" id="top">
+    <a class="brand" href="index.html">
+      <img class="brand-logo" src="assets/logo.jpeg" alt="Mendez Stone logo" />
+      <span class="brand-name">Mendez<span>Stone</span></span>
+    </a>
+    <nav class="nav">
+      <a href="index.html#services">Services</a>
+      <a href="index.html#gallery">Work</a>
+      <a href="index.html#process">Process</a>
+      <a href="index.html#reviews">Reviews</a>
+      <a href="materials.html">Materials</a>
+      <a href="booking.html">Book</a>
+      <a href="index.html#quote">Free Quote</a>
+    </nav>
+    <a class="btn btn-book" href="#" data-booksy>Book on Booksy</a>
+  </header>
+
+  
+  <div class="page-head">
+    <p class="eyebrow">Detailed booking</p>
+    <h1>Book your <em>free measure</em></h1>
+    <p>The short form on the home page is enough to get a price range. This one
+    collects everything we need to actually put you on the calendar — the room,
+    the cutouts, the access, and your dates. About five minutes.</p>
+  </div>
+
+  <section class="section">
+    <div class="booking-wrap">
+      <form class="booking-form" id="bookingForm" novalidate>
+
+        <fieldset>
+          <legend>1. How to reach you</legend>
+          <div class="grid2">
+            <div class="field wide">
+              <label for="name">Your name <span class="req">*</span></label>
+              <input id="name" type="text" autocomplete="name" placeholder="Jane Smith" required />
+            </div>
+            <div class="field">
+              <label for="phone">Phone <span class="req">*</span></label>
+              <input id="phone" type="tel" autocomplete="tel" placeholder="(214) 555-0142" required />
+            </div>
+            <div class="field">
+              <label for="email">Email</label>
+              <input id="email" type="email" autocomplete="email" placeholder="jane@email.com" />
+            </div>
+            <div class="field">
+              <label for="contact_method">Best way to reach you</label>
+              <select id="contact_method">
+                <option>Text message</option>
+                <option>Phone call</option>
+                <option>Email</option>
+              </select>
+              <span class="hint">Text is quickest — we answer as soon as we are off the job.</span>
+            </div>
+          </div>
+        </fieldset>
+
+        <fieldset>
+          <legend>2. Where the work is</legend>
+          <div class="grid2">
+            <div class="field wide">
+              <label for="address">Street address <span class="req">*</span></label>
+              <input id="address" type="text" autocomplete="street-address" />
+            </div>
+            <div class="field">
+              <label for="city">City <span class="req">*</span></label>
+              <input id="city" type="text" value="Dallas" />
+            </div>
+            <div class="field">
+              <label for="zip">ZIP</label>
+              <input id="zip" type="text" inputmode="numeric" placeholder="75231" />
+            </div>
+            <div class="field">
+              <label for="property">Property type</label>
+              <select id="property">
+                <option>Single-family home</option>
+                <option>Condo or apartment</option>
+                <option>Townhouse</option>
+                <option>Commercial space</option>
+                <option>Rental property</option>
+              </select>
+            </div>
+            <div class="field wide">
+              <label for="access">Access notes</label>
+              <textarea id="access" rows="2" placeholder="Stairs, gate code, narrow driveway, parking, dogs in the yard…"></textarea>
+              <span class="hint">Slabs are heavy and awkward. Anything that complicates carrying them in, tell us now.</span>
+            </div>
+          </div>
+        </fieldset>
+
+        <fieldset>
+          <legend>3. What we are countertopping <span class="req">*</span></legend>
+          <div class="checks">
+            <label class="check"><input type="checkbox" name="areas" value="Kitchen counters" /> Kitchen counters</label>
+            <label class="check"><input type="checkbox" name="areas" value="Kitchen island" /> Kitchen island</label>
+            <label class="check"><input type="checkbox" name="areas" value="Bathroom vanity" /> Bathroom vanity</label>
+            <label class="check"><input type="checkbox" name="areas" value="Bar or pantry" /> Bar / pantry</label>
+            <label class="check"><input type="checkbox" name="areas" value="Laundry room" /> Laundry room</label>
+            <label class="check"><input type="checkbox" name="areas" value="Outdoor kitchen" /> Outdoor kitchen</label>
+            <label class="check"><input type="checkbox" name="areas" value="Fireplace surround" /> Fireplace surround</label>
+            <label class="check"><input type="checkbox" name="areas" value="Commercial / other" /> Commercial / other</label>
+          </div>
+        </fieldset>
+
+        <fieldset>
+          <legend>4. Stone &amp; finish</legend>
+          <div class="grid2">
+            <div class="field">
+              <label for="material">Material</label>
+              <select id="material">
+                <option>Not sure yet</option>
+                <option>Granite</option>
+                <option>Quartz</option>
+                <option>Marble</option>
+              </select>
+              <span class="hint"><a href="materials.html">Compare materials</a> if you are undecided.</span>
+            </div>
+            <div class="field">
+              <label for="color">Colour or slab name</label>
+              <input id="color" type="text" placeholder="e.g. Taj Mahal, Absolute Black" />
+            </div>
+            <div class="field">
+              <label for="sqft">Approx. square feet</label>
+              <input id="sqft" type="number" min="0" placeholder="45" />
+              <span class="hint">Length × depth in inches ÷ 144, added up. Rough is fine.</span>
+            </div>
+            <div class="field">
+              <label for="thickness">Thickness</label>
+              <select id="thickness"><option>3 cm (standard)</option><option>2 cm</option><option>Not sure</option></select>
+            </div>
+            <div class="field">
+              <label for="edge">Edge profile</label>
+              <select id="edge">
+                <option value="">Not sure yet</option>
+                <option>Eased / square</option>
+                <option>Quarter round</option>
+                <option>Half bullnose</option>
+                <option>Beveled</option>
+                <option>Full bullnose</option>
+                <option>Ogee</option>
+                <option>Mitered / built-up</option>
+                <option>Waterfall</option>
+              </select>
+              <span class="hint"><a href="materials.html#edges">See them drawn to scale.</a></span>
+            </div>
+            <div class="field">
+              <label for="edge_lnft">Edge linear feet</label>
+              <input id="edge_lnft" type="number" min="0" placeholder="22" />
+            </div>
+            <div class="field">
+              <label for="finish">Finish</label>
+              <select id="finish"><option>Polished</option><option>Honed (matte)</option><option>Leathered</option><option>Not sure</option></select>
+            </div>
+          </div>
+        </fieldset>
+
+        <fieldset>
+          <legend>5. Cutouts &amp; extras</legend>
+          <div class="grid2">
+            <div class="field"><label for="sinks_under">Undermount sinks</label><input id="sinks_under" type="number" min="0" value="0" /></div>
+            <div class="field"><label for="sinks_drop">Drop-in sinks</label><input id="sinks_drop" type="number" min="0" value="0" /></div>
+            <div class="field"><label for="faucet_holes">Faucet &amp; accessory holes</label><input id="faucet_holes" type="number" min="0" value="0" /></div>
+          </div>
+          <div style="margin-top:1rem">
+            <label class="check"><input type="checkbox" id="cooktop" /> Cooktop drops into the counter</label>
+            <label class="check"><input type="checkbox" id="backsplash" /> Matching stone backsplash</label>
+            <div class="field" id="backsplashDetail" style="margin:.4rem 0 .6rem 1.6rem;max-width:220px">
+              <label for="backsplash_lnft">Backsplash linear feet</label>
+              <input id="backsplash_lnft" type="number" min="0" placeholder="16" />
+            </div>
+            <label class="check"><input type="checkbox" id="demo" /> Tear out and haul away my old tops</label>
+            <div class="field" id="demoDetail" style="margin:.4rem 0 .6rem 1.6rem;max-width:260px">
+              <label for="existing">Existing countertop material</label>
+              <select id="existing"><option>Laminate</option><option>Tile</option><option>Granite or stone</option><option>Solid surface</option><option>Butcher block</option><option>Concrete</option></select>
+            </div>
+            <label class="check"><input type="checkbox" id="plumbing" /> I need plumbing disconnected and reconnected</label>
+          </div>
+        </fieldset>
+
+        <fieldset>
+          <legend>6. Timing</legend>
+          <div class="grid2">
+            <div class="field">
+              <label for="cabinets">Are the cabinets in and level?</label>
+              <select id="cabinets">
+                <option>Yes — ready to measure now</option>
+                <option>Not yet — but they will be by then</option>
+                <option>No — still planning</option>
+              </select>
+              <span class="hint">We cannot measure until cabinets are set and level.</span>
+            </div>
+            <div class="field"><label for="measure_date">Preferred measure date</label><input id="measure_date" type="date" /></div>
+            <div class="field"><label for="deadline">Need it finished by</label><input id="deadline" type="date" /></div>
+            <div class="field">
+              <label for="flexible">How flexible are your dates?</label>
+              <select id="flexible"><option>Somewhat flexible</option><option>Very flexible</option><option>Not flexible</option></select>
+            </div>
+            <div class="field wide">
+              <label for="notes">Anything else</label>
+              <textarea id="notes" rows="3" placeholder="A tricky corner, a contractor we should coordinate with, an event you are working toward…"></textarea>
+            </div>
+          </div>
+        </fieldset>
+
+        <button class="btn btn-primary btn-full" type="submit" id="bookingSubmit">Send my booking request</button>
+        <p class="form-fine">No obligation, nothing due today. We confirm your free measure within one business day.</p>
+        <div class="booking-status" id="bookingStatus" role="status" aria-live="polite"></div>
+      </form>
+
+      <aside class="est-card" id="estBody">
+        <p>Enter your approximate square footage and we will show a ballpark range
+        here as you fill the form in.</p>
+      </aside>
+    </div>
+  </section>
+
+<!-- ░░ FOOTER ░░ -->
+  <footer class="footer">
+    <div class="foot-col">
+      <span class="brand-name brand-name--foot">Mendez<span>Stone</span></span>
+      <p>Mobile countertop service in Dallas — measure, fabricate, install, demo &amp; repair granite, quartz &amp; marble.</p>
+    </div>
+    <div class="foot-col">
+      <h4>Contact</h4>
+      <p>📞 <a href="tel:+19729890169">(972) 989-0169</a></p>
+      <p>✉️ <a href="mailto:hello@mendezstone.com">hello@mendezstone.com</a></p>
+      <p>📍 8300 S Central Expy, Dallas, TX 75241</p>
+      <p>🚐 Mobile service across Dallas–Fort Worth · Se habla español</p>
+    </div>
+    <div class="foot-col">
+      <h4>Book</h4>
+      <p><a href="#" data-booksy>Book on Booksy →</a></p>
+      <p><a href="index.html#quote">Request a quote →</a></p>
+      <p>Mon–Sat · 8am–6pm</p>
+    </div>
+    <p class="copyright">© <span id="year"></span> Mendez Stone. All rights reserved.</p>
+  </footer>
+
+  <!-- sticky mobile CTA -->
+  <a class="sticky-cta btn btn-primary" href="index.html#quote">Free Quote</a>
+
+  <script src="config.js"></script>
+  <script src="booking.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
