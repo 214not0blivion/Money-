@@ -1,0 +1,185 @@
+/* ==========================================================================
+   Mendez Stone — invoice tool
+   --------------------------------------------------------------------------
+   Two audiences, two treatments. The editor uses the site's dark interface;
+   the invoice itself is black on white, because it gets printed, photographed,
+   emailed, and handed over on a job site — and it has to stay legible through
+   all of that.
+   ========================================================================== */
+
+.invoice-layout {
+  display: grid;
+  gap: 2rem;
+  grid-template-columns: minmax(0, 1fr);
+  align-items: start;
+}
+
+@media (min-width: 68rem) {
+  .invoice-layout { grid-template-columns: minmax(0, 1fr) 30rem; }
+  .invoice-preview-wrap { position: sticky; top: 6.5rem; }
+}
+
+.btn-small { padding: 0.45rem 0.9rem; font-size: 0.88rem; }
+
+/* ---- line item rows ---- */
+
+.line {
+  display: grid;
+  grid-template-columns: 1fr 4.5rem 6rem 2rem;
+  gap: 0.6rem;
+  align-items: end;
+  margin-bottom: 0.7rem;
+}
+
+.line label { display: block; font-size: 0.78rem; font-weight: 600; color: var(--mud-600); }
+
+.line input {
+  width: 100%;
+  margin-top: 0.25rem;
+  padding: 0.55rem 0.6rem;
+  font: inherit;
+  font-size: 0.94rem;
+  border: 1px solid var(--paper-3);
+  border-radius: var(--radius);
+  background: var(--white);
+  color: var(--ink-800);
+}
+
+.line input:focus { outline: 2px solid var(--verdigris); border-color: var(--verdigris); }
+
+.line .drop {
+  border: 1px solid var(--paper-3);
+  background: transparent;
+  color: var(--mud-600);
+  border-radius: var(--radius);
+  height: 2.35rem;
+  cursor: pointer;
+  font-size: 1.1rem;
+  line-height: 1;
+}
+
+.line .drop:hover { border-color: var(--bad); color: var(--bad); }
+
+@media (max-width: 34rem) {
+  .line { grid-template-columns: 1fr 3.5rem 5rem 2rem; gap: 0.4rem; }
+  .line input { font-size: 0.88rem; padding: 0.5rem 0.45rem; }
+}
+
+/* ---- the invoice sheet ---- */
+
+.invoice-sheet {
+  background: #ffffff;
+  color: #000000;
+  padding: 2.4rem 2.2rem;
+  border: 1px solid var(--paper-3);
+  font-family: var(--font-body);
+  line-height: 1.45;
+  font-size: 0.95rem;
+}
+
+.invoice-sheet .inv-name {
+  font-family: var(--font-display);
+  font-size: 2.1rem;
+  font-weight: 700;
+  line-height: 1.05;
+  margin: 0 0 0.5rem;
+  letter-spacing: -0.01em;
+}
+
+.invoice-sheet .inv-from { margin: 0 0 1.6rem; }
+.invoice-sheet .inv-from div { margin: 0.05rem 0; }
+
+.invoice-sheet h2 {
+  font-family: var(--font-display);
+  font-size: 1.2rem;
+  font-weight: 700;
+  margin: 1.5rem 0 0.4rem;
+  color: #000;
+}
+
+.invoice-sheet .inv-meta {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  flex-wrap: wrap;
+  border-top: 2px solid #000;
+  border-bottom: 1px solid #999;
+  padding: 0.7rem 0;
+  margin-top: 1.4rem;
+  font-size: 0.9rem;
+}
+
+.invoice-sheet table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 0.4rem;
+  font-variant-numeric: tabular-nums;
+}
+
+.invoice-sheet table td {
+  padding: 0.35rem 0;
+  vertical-align: top;
+  border-bottom: 1px solid #e2e2e2;
+}
+
+.invoice-sheet table td.qty { width: 4rem; text-align: right; white-space: nowrap; }
+.invoice-sheet table td.amt { width: 6.5rem; text-align: right; white-space: nowrap; }
+
+.invoice-sheet .inv-total {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 1rem;
+  border-top: 2px solid #000;
+  margin-top: 1.6rem;
+  padding-top: 0.8rem;
+  font-family: var(--font-display);
+  font-size: 1.6rem;
+  font-weight: 700;
+  font-variant-numeric: tabular-nums;
+}
+
+.invoice-sheet .inv-sub {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.92rem;
+  margin-top: 0.4rem;
+  font-variant-numeric: tabular-nums;
+}
+
+.invoice-sheet .inv-notes {
+  margin-top: 1.4rem;
+  padding-top: 0.9rem;
+  border-top: 1px solid #ccc;
+  font-size: 0.88rem;
+}
+
+.invoice-sheet .inv-empty { color: #888; font-style: italic; }
+
+/* ---- printing ----
+   Everything but the sheet disappears, and the sheet loses its frame so it
+   sits on the paper rather than in a box. ---- */
+
+@media print {
+  .no-print, .site-header, .page-hero, .form-card, .status-bar,
+  .site-footer, .skip-link { display: none !important; }
+
+  html, body { background: #fff !important; margin: 0; padding: 0; }
+
+  .section { padding: 0 !important; }
+  .container, .invoice-layout { max-width: none; width: auto; padding: 0; display: block; }
+  .invoice-preview-wrap { position: static; }
+
+  .invoice-sheet {
+    border: 0;
+    padding: 0;
+    font-size: 11.5pt;
+    color: #000;
+  }
+
+  .invoice-sheet .inv-name { font-size: 26pt; }
+  .invoice-sheet h2 { font-size: 13pt; }
+  .invoice-sheet .inv-total { font-size: 18pt; }
+
+  @page { margin: 16mm; }
+}

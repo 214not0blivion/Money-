@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Create an Invoice — Mendez Stone (internal)</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%230b0e10'/%3E%3Cpath d='M4 12h17a4 4 0 0 1 0 8H4z' fill='%2346a892'/%3E%3C/svg%3E">
+<meta name="theme-color" content="#0b0e10">
+<link rel="stylesheet" href="css/style.css">
+<link rel="stylesheet" href="css/invoice.css">
+</head>
+<body>
+
+<a class="skip-link" href="#main">Skip to content</a>
+
+<header class="site-header no-print">
+  <div class="container nav-bar">
+    <a class="brand" href="index.html">
+      <img class="brand-logo" src="img/logo.jpg" alt="" width="34" height="34">
+      <span class="brand-mark">MENDEZ <span>STONE</span></span>
+      <span class="brand-tag">Internal</span>
+    </a>
+    <nav>
+      <ul class="nav-links">
+        <li><a href="index.html">Site</a></li>
+        <li><a href="status-editor.html">Shop status</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<section class="page-hero no-print" id="main" tabindex="-1">
+  <div class="container">
+    <span class="eyebrow">Internal tool — not linked from the public site</span>
+    <h1>Create an invoice</h1>
+    <p>Fill the left side, check the invoice on the right, then print it or save
+    it as a PDF. Nothing is sent anywhere — this runs entirely on your phone or
+    laptop.</p>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container invoice-layout">
+
+    <form class="form-card" id="inv-form" autocomplete="off">
+
+      <fieldset>
+        <legend>Customer</legend>
+        <div class="form-grid">
+          <label class="field full">Customer name
+            <input type="text" id="cust_name" placeholder="Jane Smith">
+          </label>
+          <label class="field full">Service address
+            <input type="text" id="svc_street" placeholder="3430 Idaho Avenue">
+          </label>
+          <label class="field">City
+            <input type="text" id="svc_city" value="Dallas">
+          </label>
+          <label class="field">State
+            <input type="text" id="svc_state" value="Texas" maxlength="14">
+          </label>
+          <label class="field">ZIP
+            <input type="text" id="svc_zip" inputmode="numeric" placeholder="75216">
+          </label>
+          <label class="field">Date
+            <input type="date" id="inv_date">
+          </label>
+          <label class="field">Invoice #
+            <input type="text" id="inv_no" placeholder="1042">
+            <span class="hint">Optional. Handy once you have a few of these.</span>
+          </label>
+          <label class="field">Phone
+            <input type="tel" id="cust_phone" placeholder="(214) 555-0143">
+          </label>
+        </div>
+      </fieldset>
+
+      <fieldset>
+        <legend>Installation &amp; fabrication of pieces</legend>
+        <div id="pieces"></div>
+        <button type="button" class="btn btn-ghost btn-small" data-add="pieces">+ Add a piece</button>
+      </fieldset>
+
+      <fieldset>
+        <legend>Sinks</legend>
+        <div id="sinks"></div>
+        <button type="button" class="btn btn-ghost btn-small" data-add="sinks">+ Add a sink</button>
+      </fieldset>
+
+      <fieldset>
+        <legend>Other charges</legend>
+        <div id="extras"></div>
+        <button type="button" class="btn btn-ghost btn-small" data-add="extras">+ Add a charge</button>
+        <span class="hint">Tear-out, plumbing, edge upgrades, delivery — anything else on the job.</span>
+      </fieldset>
+
+      <fieldset>
+        <legend>Total &amp; notes</legend>
+        <div class="form-grid">
+          <label class="field">Total
+            <input type="number" id="total" min="0" step="1" placeholder="600">
+            <span class="hint" id="total-hint">Type the total you are charging. Line prices are
+            optional — if you fill them in, they add up here for you.</span>
+          </label>
+          <label class="field">Deposit paid
+            <input type="number" id="deposit" min="0" step="1" placeholder="0">
+          </label>
+          <label class="field full">Notes on the invoice
+            <textarea id="notes" rows="2" placeholder="Balance due on completion. Thank you."></textarea>
+          </label>
+        </div>
+      </fieldset>
+
+      <div class="form-actions">
+        <button type="button" class="btn btn-primary" id="print-btn">Print / Save as PDF</button>
+        <button type="button" class="btn btn-ghost" id="reset-btn">Clear</button>
+        <span class="form-note">On a phone, choose “Print” then “Save to Files” to keep a PDF.</span>
+      </div>
+    </form>
+
+    <div class="invoice-preview-wrap">
+      <p class="kicker no-print">Preview</p>
+      <div id="invoice" class="invoice-sheet"></div>
+    </div>
+
+  </div>
+</section>
+
+<script src="js/site-config.js"></script>
+<script src="js/site.js"></script>
+<script src="js/invoice.js"></script>
+</body>
+</html>
