@@ -161,6 +161,26 @@ a:hover { color: var(--ink-900); }
 
 .accent-text { color: var(--verdigris-dim); font-weight: 600; }
 
+/* ---------- Skip link ---------------------------------------------------- */
+
+.skip-link {
+  position: absolute;
+  left: 0.5rem;
+  top: -3.5rem;
+  z-index: 100;
+  background: var(--verdigris);
+  color: var(--white);
+  padding: 0.6rem 1rem;
+  border-radius: var(--radius);
+  text-decoration: none;
+  font-weight: 600;
+  transition: top 0.15s;
+}
+
+.skip-link:focus { top: 0.5rem; color: var(--white); }
+
+[id="main"]:focus { outline: none; }
+
 /* ---------- Header ------------------------------------------------------- */
 
 .site-header {
@@ -455,7 +475,6 @@ a:hover { color: var(--ink-900); }
 .card p { color: var(--mud-600); font-size: 0.96rem; }
 .section.dark .card p { color: var(--slate-400); }
 
-.card .icon { display: none; }   /* icons are typographic now */
 
 /* Material cards carry a real drawn sample */
 .card.stone { padding: 0; display: flex; flex-direction: column; }
@@ -532,7 +551,6 @@ a:hover { color: var(--ink-900); }
 
 .tile h3 { font-size: var(--step-1); margin-bottom: 0.45rem; }
 .tile p { color: var(--mud-600); font-size: 0.93rem; padding-right: 1.5rem; }
-.tile .icon { display: none; }
 
 /* ---------- Tables ------------------------------------------------------- */
 

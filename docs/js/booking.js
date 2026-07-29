@@ -95,12 +95,22 @@
 
   /* ---------- Build the request summary ---------- */
 
+  function prettyDate(value) {
+    var m = /^(\d{4})-(\d{2})-(\d{2})$/.exec(value);
+    if (!m) return value;
+    var d = new Date(+m[1], +m[2] - 1, +m[3]);
+    if (isNaN(d.getTime())) return value;
+    return d.toLocaleDateString('en-US',
+      { weekday: 'long', month: 'long', day: 'numeric', year: 'numeric' });
+  }
+
   function labelFor(id) {
     var el = $(id);
     if (!el) return '';
     if (el.tagName === 'SELECT') {
       return el.options[el.selectedIndex] ? el.options[el.selectedIndex].text : '';
     }
+    if (el.type === 'date') return prettyDate(el.value);
     return el.value;
   }
 
@@ -126,7 +136,7 @@
       .filter(function (v) { return v && v.trim(); }).join(', '));
     add('Property type', labelFor('property_type'));
     add('Is this new construction or a replacement?', labelFor('project_type'));
-    add('Stairs / elevator access notes', labelFor('access_notes'));
+    add('Access notes', labelFor('access_notes'));
 
     lines.push('');
     lines.push('=== COUNTERTOP DETAILS ===');
