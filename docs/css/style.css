@@ -340,6 +340,12 @@ a:hover { color: var(--ink-900); }
   border-top: 1px solid rgba(255, 255, 255, 0.12);
 }
 
+.hero-spec {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
 .hero-spec dt {
   font-family: var(--font-mono);
   font-size: 0.68rem;
