@@ -126,6 +126,48 @@ img { max-width: 100%; display: block; }
 
 .nav-cta:hover { background: var(--accent-dark); }
 
+/* ---------- Live status bar ---------- */
+
+.status-bar {
+  background: var(--charcoal-soft);
+  color: var(--sand);
+  font-size: .9rem;
+  border-bottom: 1px solid rgba(233, 226, 214, .12);
+}
+
+.status-inner {
+  display: flex;
+  align-items: baseline;
+  gap: .6rem;
+  padding: .6rem 0;
+  flex-wrap: wrap;
+}
+
+.status-dot {
+  font-size: .7rem;
+  line-height: 1;
+  position: relative;
+  top: -1px;
+}
+
+.status-text { display: flex; gap: .55rem; flex-wrap: wrap; align-items: baseline; }
+.status-text strong { color: var(--white); font-weight: 600; }
+.status-detail { opacity: .82; }
+
+.status-bar.is-available .status-dot { color: #5fbf6a; }
+.status-bar.is-busy      .status-dot { color: #e0a33c; }
+.status-bar.is-away      .status-dot { color: #9a9187; }
+.status-bar.is-unknown   .status-dot { color: #9a9187; }
+
+.status-bar.is-available { background: #223026; }
+.status-bar.is-busy      { background: #33291a; }
+
+@media (max-width: 640px) {
+  .status-bar { font-size: .84rem; }
+  .status-text { gap: .25rem; }
+  .status-detail { flex-basis: 100%; }
+}
+
 /* ---------- Hero ---------- */
 
 .hero {

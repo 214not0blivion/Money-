@@ -86,6 +86,36 @@ var FORM_ENDPOINT = 'https://formspree.io/f/your-form-id';
 
 The form will POST there and fall back to email only if the request fails.
 
+## Live shop status
+
+A bar under the menu on every page tells customers whether you can pick up
+right now — "Available right now", "On a job right now — back around 5:00 PM",
+or "Out for now". It reads `status.json`.
+
+**To change it:** open `status-editor.html`, pick a status and a rough end
+time, tap *Copy status.json*, and paste the result into `status.json` in the
+repository. That page is not linked from the public site and is marked
+`noindex`. Bookmark the GitHub edit screen for `status.json` on your phone's
+home screen and the whole thing is three taps.
+
+The design assumes a wrong status is worse than no status, so it fails safe
+three ways:
+
+- **Auto-expiry.** A busy status carries an end time and flips itself back to
+  available once that passes. Forgetting to clear it costs nothing — which is
+  the point, because you will forget while carrying a slab.
+- **Staleness.** If `status.json` has not been touched in four days, the bar
+  stops claiming anything and shows a neutral "call or text anytime".
+- **Silence on failure.** If the file is missing or unreachable, the bar hides
+  itself rather than showing something misleading.
+
+Open tabs re-check every five minutes; a fresh page load is immediate.
+
+Be honest with yourself about whether you will keep this current. A status bar
+that says "Available right now" while five calls go unanswered does more damage
+than no bar at all. If you would rather not maintain it, delete `status.json`
+and the bar disappears from every page on its own.
+
 ## The estimate calculator
 
 `booking.html` shows a live price range as the customer fills in the form,
