@@ -22,14 +22,12 @@ window.MENDEZ_STONE = {
   state: 'TX',
   serviceArea: 'Dallas–Fort Worth and the surrounding North Texas communities',
 
-  // TODO: CONFIRM THESE HOURS. The Google Business Profile shows a 10 PM
-  // closing time, which does not match the placeholder schedule below. Set
-  // these to your real weekly hours and make them identical to the profile —
-  // customers who drive out to a closed shop leave one-star reviews.
+  // Availability rather than fixed hours — we schedule around the customer.
+  // If you ever want posted hours instead, replace these rows with real times
+  // and make them identical to the Google Business Profile.
   hours: [
-    ['Monday – Friday', '8:00 AM – 5:00 PM'],
-    ['Saturday', '9:00 AM – 2:00 PM'],
-    ['Sunday', 'Closed']
+    ['Monday – Sunday', 'Flexible — call anytime'],
+    ['Shop &amp; slab yard', 'Open by appointment']
   ],
 
   // --- Google Business Profile ---------------------------------------------

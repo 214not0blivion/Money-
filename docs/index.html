@@ -10,10 +10,13 @@
 <!-- Local business data for Google. Name, address, and phone below match the
      Google Business Profile exactly — keep them that way, and keep them in
      sync with js/site-config.js.
-     STILL TO DO: (1) confirm openingHoursSpecification against the profile,
-     which shows a 10 PM close; (2) add a "sameAs" array holding the profile
-     URL, e.g. "sameAs": ["https://www.google.com/maps/place/..."] — that is
-     what explicitly ties this page to that listing. -->
+     There is deliberately no openingHoursSpecification here. The business runs
+     on flexible availability, and the Google Business Profile is the single
+     source of truth for hours — publishing a second, different schedule would
+     only contradict it.
+     STILL TO DO: add a "sameAs" array holding the profile URL, e.g.
+     "sameAs": ["https://www.google.com/maps/place/..."] — that is what
+     explicitly ties this page to that listing. -->
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -47,20 +50,6 @@
     "Quartzite countertops",
     "Countertop fabrication",
     "Countertop installation"
-  ],
-  "openingHoursSpecification": [
-    {
-      "@type": "OpeningHoursSpecification",
-      "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
-      "opens": "08:00",
-      "closes": "17:00"
-    },
-    {
-      "@type": "OpeningHoursSpecification",
-      "dayOfWeek": "Saturday",
-      "opens": "09:00",
-      "closes": "14:00"
-    }
   ]
 }
 </script>
@@ -301,7 +290,7 @@
         </ul>
       </div>
       <div>
-        <h4>Hours</h4>
+        <h4>Availability</h4>
         <table style="font-size:.9rem;"><tbody data-ms="hours"></tbody></table>
       </div>
     </div>

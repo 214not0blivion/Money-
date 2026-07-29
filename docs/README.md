@@ -27,9 +27,12 @@ Open it and replace every value marked `TODO`:
 - `serviceArea` — set to Dallas–Fort Worth and North Texas
 - `email` / `bookingEmail` — **still a placeholder.** Booking requests have
   nowhere real to go until this is a working inbox.
-- `hours` — **still unverified.** The Google profile shows a 10 PM close, which
-  does not match the weekday 5 PM placeholder below it. Whatever the truth is,
-  make the site and the profile say the same thing.
+- `hours` — set to flexible availability ("call anytime", shop by appointment)
+  rather than fixed times. The `index.html` structured data deliberately omits
+  an `openingHoursSpecification` so the site never contradicts the hours on
+  your Google Business Profile, which stays the single source of truth. If you
+  later want posted hours on the site, put real times in `hours` and make them
+  identical to the profile.
 - `googleProfileUrl` / `googleReviewUrl` — **not yet filled in.** Until they
   are, the review links stay hidden.
 - `pricing` — installed price per square foot, low and high, per material
