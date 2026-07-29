@@ -121,7 +121,7 @@
       lines.push(label + ': ' + value);
     }
 
-    lines.push('=== CONTACT ===');
+    lines.push('--- CONTACT ---');
     add('Name', labelFor('name'));
     add('Phone', labelFor('phone'));
     add('Email', labelFor('email'));
@@ -129,7 +129,7 @@
     add('Preferred contact method', labelFor('contact_method'));
 
     lines.push('');
-    lines.push('=== JOB SITE ===');
+    lines.push('--- JOB SITE ---');
     add('Address', labelFor('address'));
     add('City / State / ZIP', [labelFor('city'), labelFor('state'), labelFor('zip')]
       .filter(function (v) { return v && v.trim(); }).join(', '));
@@ -138,7 +138,7 @@
     add('Access notes', labelFor('access_notes'));
 
     lines.push('');
-    lines.push('=== COUNTERTOP DETAILS ===');
+    lines.push('--- COUNTERTOP DETAILS ---');
     add('Areas', Array.prototype.slice.call(
       document.querySelectorAll('input[name="areas"]:checked')
     ).map(function (c) { return c.value; }).join(', '));
@@ -151,7 +151,7 @@
     add('Finish', labelFor('finish'));
 
     lines.push('');
-    lines.push('=== CUTOUTS & EXTRAS ===');
+    lines.push('--- CUTOUTS & EXTRAS ---');
     add('Undermount sinks', labelFor('sinks_undermount'));
     add('Drop-in sinks', labelFor('sinks_dropin'));
     add('Faucet / accessory holes', labelFor('faucet_holes'));
@@ -165,21 +165,21 @@
     add('Appliances on site', labelFor('appliances'));
 
     lines.push('');
-    lines.push('=== SCHEDULING ===');
+    lines.push('--- SCHEDULING ---');
     add('Preferred template date', labelFor('template_date'));
     add('Preferred install window', labelFor('install_window'));
     add('Target completion date', labelFor('deadline'));
     add('Flexible on dates?', labelFor('flexible'));
 
     lines.push('');
-    lines.push('=== OTHER ===');
+    lines.push('--- OTHER ---');
     add('How did you hear about us?', labelFor('referral'));
     add('Notes', labelFor('notes'));
 
     var est = computeEstimate();
     if (est) {
       lines.push('');
-      lines.push('=== SITE-CALCULATED BALLPARK ===');
+      lines.push('--- SITE-CALCULATED BALLPARK ---');
       lines.push(money(est.low) + ' – ' + money(est.high) + ' (not a quote)');
     }
 
