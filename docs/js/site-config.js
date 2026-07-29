@@ -23,6 +23,10 @@ window.MENDEZ_STONE = {
   state: 'TX',
   serviceArea: 'Dallas–Fort Worth and the surrounding North Texas communities',
 
+  // We travel to the customer — this is a mobile service, not a showroom.
+  mobileService: true,
+  spanish: true,
+
   // Availability rather than fixed hours — we schedule around the customer.
   // If you ever want posted hours instead, replace these rows with real times
   // and make them identical to the Google Business Profile.
@@ -31,6 +35,22 @@ window.MENDEZ_STONE = {
     ['Shop &amp; slab yard', 'Open by appointment'],
     ['Out on a job?', 'Text is fastest']
   ],
+
+  // --- Booking & lead delivery ---------------------------------------------
+  // Booksy is where customers self-book a time. Taken from the previous site.
+  booksyUrl: 'https://booksy.com/en-us/1567222_mendez-stone_other_134786_dallas',
+
+  // Where the booking form actually sends requests, tried in this order:
+  //   1. leadEndpoint  — your own server, if you ever run one
+  //   2. web3formsKey  — free key from web3forms.com; hides your address
+  //   3. leadEmail     — FormSubmit, no key, no signup. The FIRST submission
+  //      sends a one-time confirmation to this address; click it once and
+  //      every later lead arrives automatically.
+  // If all of them fail, the form falls back to the customer's mail app so a
+  // lead is never simply lost.
+  leadEndpoint: '',
+  web3formsKey: '',
+  leadEmail: 'angelmanuemartinez2@gmail.com',
 
   // --- Google Business Profile ---------------------------------------------
   // Paste the two links from your Google Business Profile below. Any link left

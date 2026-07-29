@@ -4,15 +4,14 @@
    The estimate is a ballpark only. Final pricing comes from the on-site
    template measurement.
 
-   Submission: with no server behind this static site, the form composes a
-   complete, formatted request and opens the customer's email client addressed
-   to the shop. To switch to a hosted form service (Formspree, Netlify Forms,
-   Basin, etc.), set FORM_ENDPOINT below to the POST URL and the form will send
-   directly instead.
+   Submission: the request is delivered straight to the shop, using the same
+   chain configured in site-config.js — your own endpoint, then Web3Forms, then
+   FormSubmit (no key, no signup). Only if every one of those fails does the
+   form fall back to opening the customer's mail app, so a lead is never lost
+   to a network hiccup.
    ========================================================================== */
 
 (function () {
-  var FORM_ENDPOINT = ''; // e.g. 'https://formspree.io/f/xxxxxxx'
 
   var cfg = window.MENDEZ_STONE || {};
   var pricing = cfg.pricing || {};
@@ -220,6 +219,34 @@
     box.scrollIntoView({ behavior: 'smooth', block: 'center' });
   }
 
+  // Deliver in the order configured: own server, Web3Forms, then FormSubmit.
+  function deliver(payload) {
+    if (cfg.leadEndpoint) {
+      return fetch(cfg.leadEndpoint, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(payload)
+      });
+    }
+    if (cfg.web3formsKey) {
+      var w3 = { access_key: cfg.web3formsKey };
+      for (var k in payload) { if (payload.hasOwnProperty(k)) w3[k] = payload[k]; }
+      return fetch('https://api.web3forms.com/submit', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+        body: JSON.stringify(w3)
+      });
+    }
+    if (cfg.leadEmail) {
+      return fetch('https://formsubmit.co/ajax/' + encodeURIComponent(cfg.leadEmail), {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+        body: JSON.stringify(payload)
+      });
+    }
+    return Promise.reject(new Error('no delivery configured'));
+  }
+
   function onSubmit(e) {
     e.preventDefault();
 
@@ -231,30 +258,37 @@
 
     var summary = collect();
     var name = ($('name') || {}).value || 'Customer';
+    var btn = document.querySelector('#booking-form button[type="submit"]');
 
-    // Keep a local copy so the customer does not lose their entries.
+    // Keep a local copy so the customer never loses what they typed.
     try {
       localStorage.setItem('mendezstone_last_request', summary);
     } catch (err) { /* storage unavailable — not fatal */ }
 
-    if (FORM_ENDPOINT) {
-      fetch(FORM_ENDPOINT, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
-        body: JSON.stringify({ name: name, summary: summary })
-      }).then(function (res) {
-        if (!res.ok) throw new Error('bad status');
-        showStatus('ok', '<strong>Request sent.</strong> Thanks, ' + escapeHtml(name) +
-          '. We will confirm your template appointment within one business day.');
-        $('booking-form').reset();
-        renderEstimate();
-      }).catch(function () {
-        emailFallback(summary, name);
-      });
-      return;
-    }
+    if (btn) { btn.disabled = true; btn.textContent = 'Sending…'; }
 
-    emailFallback(summary, name);
+    deliver({
+      _subject: 'Installation request — ' + name,
+      name: name,
+      phone: ($('phone') || {}).value || '',
+      email: ($('email') || {}).value || '',
+      material: labelFor('material'),
+      sqft: ($('sqft') || {}).value || '',
+      message: summary
+    }).then(function (res) {
+      if (res && res.ok === false) throw new Error('bad status');
+      showStatus('ok',
+        '<strong>Request sent.</strong> Thanks, ' + escapeHtml(name.split(' ')[0]) +
+        ' — we will confirm your free measurement within one business day. ' +
+        'Need it sooner? Text <a href="' + (cfg.smsHref || '#') + '">' +
+        escapeHtml(cfg.phone || '') + '</a>.');
+      $('booking-form').reset();
+      renderEstimate();
+    }).catch(function () {
+      emailFallback(summary, name);
+    }).then(function () {
+      if (btn) { btn.disabled = false; btn.textContent = 'Submit Request'; }
+    });
   }
 
   function escapeHtml(s) {
@@ -263,23 +297,21 @@
     });
   }
 
+  // Last resort only — the delivery above failed, so hand the customer a
+  // pre-filled email rather than losing what they wrote.
   function emailFallback(summary, name) {
-    var to = cfg.bookingEmail || cfg.email || '';
-    var subject = 'Installation request — ' + name;
+    var to = cfg.bookingEmail || cfg.leadEmail || cfg.email || '';
     var href = 'mailto:' + encodeURIComponent(to) +
-      '?subject=' + encodeURIComponent(subject) +
+      '?subject=' + encodeURIComponent('Installation request — ' + name) +
       '&body=' + encodeURIComponent(summary);
 
-    showStatus('ok',
-      '<strong>Almost done — one more click.</strong><br>' +
-      'Your request is ready to send. ' +
-      '<a href="' + href + '" style="font-weight:600;">Click here to open it in your email app</a> ' +
-      'and press send. Rather not use email? Call or text ' +
-      '<a href="' + (cfg.phoneHref || '#') + '">' + escapeHtml(cfg.phone || '') + '</a> ' +
-      '(<a href="' + (cfg.smsHref || '#') + '">text us</a> — usually the fastest way to ' +
-      'reach us).' +
-      '<details style="margin-top:.8rem;"><summary style="cursor:pointer;">Or copy your request text</summary>' +
-      '<textarea readonly style="width:100%;height:220px;margin-top:.5rem;font-family:monospace;font-size:.8rem;">' +
+    showStatus('err',
+      '<strong>That did not send.</strong> Your request is saved — ' +
+      '<a href="' + href + '">open it in your email app</a> and press send, or ' +
+      'call or text <a href="' + (cfg.phoneHref || '#') + '">' +
+      escapeHtml(cfg.phone || '') + '</a> and we will take the details over the phone.' +
+      '<details style="margin-top:.8rem;"><summary style="cursor:pointer;">Copy the text instead</summary>' +
+      '<textarea readonly style="width:100%;height:200px;margin-top:.5rem;font-family:monospace;font-size:.8rem;">' +
       escapeHtml(summary) + '</textarea></details>');
   }
 

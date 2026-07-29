@@ -1,0 +1,15 @@
+{
+  "name": "Mendez Stone — Countertops",
+  "short_name": "Mendez Stone",
+  "description": "Mobile countertop service in Dallas — measure, fabricate, install, demo and repair granite, quartz and marble.",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "background_color": "#0b0e10",
+  "theme_color": "#0b0e10",
+  "icons": [
+    { "src": "img/icon-192.png", "sizes": "192x192", "type": "image/png" },
+    { "src": "img/icon-512.png", "sizes": "512x512", "type": "image/png" },
+    { "src": "img/icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "maskable" }
+  ]
+}

@@ -978,3 +978,12 @@ label.field input[type="number"] { font-family: var(--font-mono); }
   .hero-specs { gap: 1.5rem; }
   .step { grid-template-columns: 2.6rem 1fr; gap: 1rem; }
 }
+
+/* Brand logo carried over from the previous site. */
+.brand-logo {
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  object-fit: cover;
+  flex: none;
+}

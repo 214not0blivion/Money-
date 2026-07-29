@@ -13,6 +13,11 @@
 <meta name="twitter:card" content="summary">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%230b0e10'/%3E%3Cpath d='M4 12h17a4 4 0 0 1 0 8H4z' fill='%2346a892'/%3E%3C/svg%3E">
 <meta name="theme-color" content="#0b0e10">
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="apple-touch-icon" href="img/apple-touch-icon.png">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="Mendez Stone">
 <link rel="stylesheet" href="css/style.css">
 
 <!-- Local business data for Google. Name, address, and phone below match the
@@ -69,6 +74,7 @@
 <header class="site-header">
   <div class="container nav-bar">
     <a class="brand" href="index.html">
+      <img class="brand-logo" src="img/logo.jpg" alt="" width="34" height="34">
       <span class="brand-mark">MENDEZ <span>STONE</span></span>
       <span class="brand-tag">Countertops</span>
     </a>
@@ -92,21 +98,21 @@
   <canvas class="hero-slab" data-stone="hero" aria-hidden="true"></canvas>
   <div class="container">
     <div class="hero-inner">
-      <span class="eyebrow">Dallas · Fabrication &amp; Installation</span>
+      <span class="eyebrow">Dallas · Mobile service · Se habla español</span>
       <h1>Countertops measured, cut, and installed by one crew.</h1>
       <p class="lead">
-        From slab selection to the final seam, Mendez Stone handles the whole job in-house —
-        serving Dallas and North Texas from our shop at 8300 South Central Expressway.
-        Check materials, get a ballpark price, and book your template appointment in minutes.
+        We come to you. Mendez Stone measures, fabricates, installs, tears out and
+        repairs granite, quartz and marble across Dallas–Fort Worth — free
+        measurement, and a written price the same day.
       </p>
       <div class="btn-row">
         <a class="btn btn-primary" href="booking.html">Book an Installation</a>
-        <a class="btn btn-ghost" href="portal.html">Open the Customer Portal</a>
+        <a class="btn btn-ghost" data-ms-href="booksy" href="#">Book on Booksy</a>
       </div>
       <dl class="hero-specs">
         <div class="hero-spec">
-          <dt>Lead time</dt>
-          <dd>2–3 weeks</dd>
+          <dt>Measurement</dt>
+          <dd>Free</dd>
         </div>
         <div class="hero-spec">
           <dt>Thickness</dt>
@@ -117,8 +123,8 @@
           <dd>One day</dd>
         </div>
         <div class="hero-spec">
-          <dt>Fabrication</dt>
-          <dd>In-house</dd>
+          <dt>Payment</dt>
+          <dd>Cards &amp; cash</dd>
         </div>
       </dl>
     </div>
@@ -208,34 +214,41 @@
     </div>
     <div class="grid">
       <div class="card">
-                <h3>Laser Templating</h3>
-        <p>Digital templates capture your cabinets exactly as built — including the walls that
-        aren't square. Precise templates are what make seams disappear.</p>
+        <span class="kicker">Free · about 30 min</span>
+        <h3>Measurement <em>Medidas</em></h3>
+        <p>We come to you and measure your cabinets exactly as built — including the walls that
+        aren't square. Precise measurement is what makes seams disappear. No charge, no
+        obligation.</p>
       </div>
       <div class="card">
-                <h3>Slab Selection</h3>
-        <p>Walk the slab yard with us and pick the exact piece your kitchen gets. We lay out the
+        <span class="kicker">By appointment</span>
+        <h3>Slab Selection</h3>
+        <p>Walk the yard with us and pick the exact piece your kitchen gets. We lay out the
         veining before we cut so the pattern lands where you want it.</p>
       </div>
       <div class="card">
-                <h3>In-House Fabrication</h3>
-        <p>CNC cutting, edge profiling, and polishing done in our own shop. Nothing gets
-        subcontracted, so nothing gets lost in translation.</p>
+        <span class="kicker">About 4 hours</span>
+        <h3>Fabrication <em>Fabricación</em></h3>
+        <p>Cutting, edge profiling and polishing to spec — clean edges, tight seams. Nothing
+        gets subcontracted, so nothing gets lost in translation.</p>
       </div>
       <div class="card">
-                <h3>Installation</h3>
-        <p>Tear-out, set, seam, and seal — most kitchens in a single day. We protect your floors
-        and haul the old tops away.</p>
+        <span class="kicker">About 6 hours</span>
+        <h3>Installation <em>Instalación</em></h3>
+        <p>Set, seamed, levelled and sealed — most kitchens in a single day. We protect your
+        floors on the way in and clean up on the way out.</p>
       </div>
       <div class="card">
-                <h3>Sinks &amp; Cutouts</h3>
-        <p>Undermount and drop-in sinks, cooktops, faucet holes, and soap dispensers cut to your
-        fixture's exact template.</p>
+        <span class="kicker">About 5 hours</span>
+        <h3>Demolition <em>Demolición</em></h3>
+        <p>Safe tear-out and haul-away of your old countertops, so the space is ready for stone.
+        Undermount and drop-in sinks, cooktops and faucet holes are cut to your exact fixture.</p>
       </div>
       <div class="card">
-                <h3>Repairs &amp; Restoration</h3>
-        <p>Chip repair, seam refresh, re-polishing, and resealing on stone we installed and stone
-        we didn't.</p>
+        <span class="kicker">About 4 hours</span>
+        <h3>Repairs <em>Reparaciones</em></h3>
+        <p>Chip repair, seam fixes, re-polishing, resealing and sink swaps — on stone we
+        installed and stone we didn't.</p>
       </div>
     </div>
   </div>
@@ -336,6 +349,49 @@
   </div>
 </section>
 
+<section class="section alt" id="yard">
+  <div class="container">
+    <div class="section-head">
+      <span class="eyebrow">The yard</span>
+      <h2>Pick your slab before we cut it</h2>
+      <p>Granite, quartz, marble and quartzite in stock at our Dallas yard. Come
+      walk it with us — you choose the exact piece your kitchen gets, and we lay
+      the veining out before a saw touches it.</p>
+    </div>
+    <div class="work-grid">
+      <figure class="work-item">
+        <img src="img/yard-racked-slabs-800.jpg"
+             srcset="img/yard-racked-slabs-800.jpg 800w, img/yard-racked-slabs-1600.jpg 1600w"
+             sizes="(min-width: 52rem) 33vw, 100vw"
+             width="1600" height="1200" loading="lazy" decoding="async"
+             alt="Stone slabs racked upright inside the Mendez Stone warehouse in Dallas.">
+        <figcaption><span class="kicker">In stock</span>
+          Slabs racked at the yard — marble, quartzite and quartz, ready to cut.</figcaption>
+      </figure>
+      <figure class="work-item">
+        <img src="img/yard-inventory-800.jpg"
+             srcset="img/yard-inventory-800.jpg 800w, img/yard-inventory-1600.jpg 1600w"
+             sizes="(min-width: 52rem) 33vw, 100vw"
+             width="1600" height="1200" loading="lazy" decoding="async"
+             alt="Mixed stone inventory stacked and leaning in the Mendez Stone warehouse.">
+        <figcaption><span class="kicker">Remnants</span>
+          Smaller pieces too. A vanity or a laundry top often comes out of a
+          remnant, which keeps the price down.</figcaption>
+      </figure>
+      <figure class="work-item">
+        <img src="img/onsite-cutting-800.jpg"
+             srcset="img/onsite-cutting-800.jpg 800w, img/onsite-cutting-1600.jpg 1600w"
+             sizes="(min-width: 52rem) 33vw, 100vw"
+             width="1600" height="900" loading="lazy" decoding="async"
+             alt="A Mendez Stone fabricator wet-cutting a stone slab on sawhorses outside a customer's house in Dallas.">
+        <figcaption><span class="kicker">Mobile</span>
+          Cutting to fit in the customer's driveway. Being mobile is why a
+          same-day adjustment does not become a second appointment.</figcaption>
+      </figure>
+    </div>
+  </div>
+</section>
+
 <section class="section dark">
   <div class="container">
     <div class="section-head">
@@ -365,7 +421,10 @@
         job site, material, cutouts, and your preferred dates. You'll get a ballpark price
         while you fill it out.</p>
       </div>
-      <a class="btn btn-primary" href="booking.html">Start Your Booking</a>
+      <div class="btn-row">
+        <a class="btn btn-primary" href="booking.html">Start Your Booking</a>
+        <a class="btn btn-ghost" data-ms-href="booksy" href="#">Book on Booksy</a>
+      </div>
     </div>
   </div>
 </section>
